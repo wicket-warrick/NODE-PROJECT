@@ -1,0 +1,47 @@
+*.REQUIRED
+
+1.DATABASE.
+
+Taboa de usuarios:
+
+--id_usuario*
+--nome de usuario*
+--pass*
+---------------------------------rol(default=usuario)
+--email*
+--avatar
+--biografia
+---------------------------------data de creacion
+---------------------------------data derradiera modificacion
+---------------------------------borrado
+--codigo de rexistro
+--activado(activacion de usuario)
+---------------------------------codigo de recuperacion
+
+
+Taboa NEWS
+
+--id_news*
+--contido*
+--title*
+--entradilla
+--topic*
+---------------------------------------FOREGIN KEY--id_author*
+--data de creacion
+--data de modificacion
+
+Taboa de imaxes de/para NEWS
+
+--id_imaxe*
+--url *
+--id_new*
+
+
+Taboa de votos de NEWS
+
+--id_voto
+--voto*(ENOM +1,-1)
+--id_articulo*
+--id_author
+
+

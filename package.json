@@ -1,0 +1,39 @@
+{
+  "name": "mod2_proxecto-node",
+  "version": "1.0.0",
+  "description": "Backend project for HAB boot camp",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "initdb": "node ./db/initDb.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wicket-warrick/PROXECTO2_NODE.git"
+  },
+  "keywords": [],
+  "author": "Hugo Suárez, Juan Fernández",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wicket-warrick/PROXECTO2_NODE/issues"
+  },
+  "homepage": "https://github.com/wicket-warrick/PROXECTO2_NODE#readme",
+  "dependencies": {
+    "@sendgrid/mail": "^7.6.2",
+    "bcrypt": "^5.0.1",
+    "chalk": "^4.1.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
+    "express": "^4.17.3",
+    "express-fileupload": "^1.3.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^2.3.3",
+    "sharp": "^0.30.4",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

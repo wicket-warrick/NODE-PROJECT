@@ -1,0 +1,169 @@
+2.ENDPOINTS
+
+2.1.USUARIOS ANONIMOS
+
+-GET /entries24h
+    -Listado de todolos artículos 24 h anteriores á consulta
+    -Autenticacion:non
+    -PathParams:
+        *timestamp de data de consulta
+    -Orden por valoracion
+    -Retorna:informacion(Título,entradilla,author,topic) de todolos artículos(según Path Params)
+
+-GET /listentries/
+    -Listado de todolos artículos 
+    -Autenticacion:non
+    -Orden por data de creacion
+    -PathParams:
+        *definir en url createdBefore/createdAfter
+    -Retorna:informacion(Título,entradilla,author,topic) de todolos artículos(según PathParams)
+
+-GET /entries/:topic
+    -Obter news dun topic en concreto
+    -Orden por data de creacion
+    -Autenticacion:no
+    -Path Params:
+        *topic
+    -Retorna:informacion(Título,entradilla,author,createdData) de todolos artículos
+
+2.2.USUARIOS REXISTRADOS
+
+-POST /entries
+    -Crear un articulo
+    -Autenticacion:si
+    -Body:
+        *title:titulo do articulo
+        *contido:contido do articulo
+        *entradilla
+        *topic
+    -Retorna: mensaxe de traballo feito ou non
+
+
+
+-PUT /entries/:idEntry
+    -Editar un articulo
+    -Autenticacion:si
+        *precisará ser o autor
+    -Body:
+        *title:titulo do articulo
+        *contido:contido do articulo
+        *entradilla
+        *topic
+    --Retorna:mensaxe de modificacion ou non
+
+-DELETE /entries/:idEntry
+    -Borrar un artículo
+    -Autenticacion:si
+        *Precisará ser o autor
+    -Retorna:mensaxe de borrado ou non
+
+-POST /entries/:idEntry/votes
+    -Votar un artículo
+    -Autenticacion:si
+    -Params Params:
+        *idEntry:id_articulo
+    -Body:
+        *vote: +1/-1
+    -Retonra :mensaxe de voto gardado correctamente ou non
+    
+
+-POST /entries/:idEntry/photos
+    -Agregar unha foto a un artículo
+    -Autenticacion:si
+        *Precisará ser o autor
+    -Path Params:
+        *idEntry:id_articulo
+    -Body:
+        *photo:foto para agregar ó articulo
+    -Retorna:mensaxe de subida correcta
+
+-DELETE /entries/:idEntry/photos/:idPhoto
+    -Borar foto dun articulo
+    -Autenticacion:si
+        *Precisará ser o autor 
+    -Params Params:
+        ---------------------------------------*idEntry:id_articulo
+        *idPhoto:id_imaxe
+    -Retorna:mensaxe de borrado correcto ou non
+
+
+
+POST /users
+    -Creación de un usuario PENDIENTE DE VALIDACION(enviase email)
+    -Autenticacion:non
+    -Body:
+        *email
+        *pass
+        *username
+        *biografia(Opcional)
+    -Retorna: mensaxe de usuario creado correctamente e que está pendente de validarse
+
+-POST /users/:idUser/avatar
+    -Agregar unha foto a un avatar
+    -Autenticacion:si
+        *Precisará ser o autor
+    -Path Params:
+        *idUser:id_usuario
+    -Body:
+        *photo:foto para agregar avatar
+    -Retorna:mensaxe de subida correcta
+
+-GET /users/validate/:registartionCode
+    -Validar usuario, pendiente de activacion
+    -Autenticacion:non
+    -Path   Params
+        *registartionCode:codigo xerado no rexistro e enviado por mail
+    -Retorna:mensaxe que indica se o usuario esta validado
+
+-POST /users/login
+    -Facer login
+    -Autenticacion:non
+    -Body:
+        *email
+        *pass
+    -Retorna: un token(JWT-JSON Web Token)
+
+XESTION USUARIO(OPCIONAL)-----------------------------------------------------------------------
+-PUT /users/:idUser
+    -Modificación datos de usuario
+    -Autenticacion:si
+    -Path Params:
+        *idUser:id_usuario a modificar
+    -Body:
+        *email
+        *username
+    -Retorna:mensaxe modficiación correcta
+
+
+-PUT users/:idUser/pass
+    -Editar pass de un usuario
+    -Autenticacion:si    
+    -Path Params:
+        *idUser:id_usuario
+    -Body:
+        *oldPass
+        *newPass
+    -Retorna:mensaxe pass cambiada con exito
+
+-DELETE /users/:idUser
+    -Borar usuario dun articulo
+    -Autenticacion:si
+       *Precisará ser o autor ou ter o rol de admin
+    -Params Params:
+        *idUser:id_usuario
+    -Retorna:mensaxe de borrado correcto
+
+-POST/PUT /users/recover-pass
+    -Enviar un email co codigo de recuperacion de contraseña
+    -Autenticacion:no
+    -Body:
+        *email:correo do usuario
+    -Retorna:mensaxe que correo de recuperacion de email  enviado correctamente
+
+-POST/PUT /users/reset-pass
+    -Cambiar a pass dun usuario co codigo de recuperacion   
+    -Autenticacion
+    -Body:
+        *recoverCode:codigo de recuperacion de pass
+        *newPass
+    -Retorna:mensaxe que indica que se actualizou correctamente o pass
