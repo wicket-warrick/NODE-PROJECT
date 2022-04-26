@@ -12,7 +12,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"name\":\"perico one\",\n    \"email\":\"backendprojecthab@gmail.com\",\n    \"password\":\"1234asdf\"\n}",
+					"raw": "{\n    \"name\":\"Juanito\",\n    \"email\":\"hugolgsuarez@gmail.com\",\n    \"password\":\"1234asdf\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -56,10 +56,17 @@
 			"name": "LOGIIN USUARIO",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"email\":\"backendprojecthab@gmail.com\",\n    \"password\":\"1234asdf\"\n}",
+					"raw": "{\n    \"email\":\"backendprojecthab@gmail.com\",\n    \"password\":\"1234asdf\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -75,6 +82,98 @@
 					"path": [
 						"users",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CREATE NEW",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUwOTY1NjcyLCJleHAiOjE2NTEwNTIwNzJ9.uxgKgTnDZh2PpjAW0ym4EW0jgL1lZoqNHVlY_i-VgOU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"Proba de noticia 1\",\n    \"description\":\"aouyghaodiufnviug nwoiurhgnwouerhvngwo nowurthgn owiuh n\",\n    \"entradilla\":\"1sedrgsegsrgyrtyhjrdthyegre\",\n    \"topic\":\"salud\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/new",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE NEW",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUwOTcwMDkzLCJleHAiOjE2NTEwNTY0OTN9.CCvZkcvTa-DsvVhTTvdXzEkVdGpK3Ib7VIv-y30iqYc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/new/10",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"new",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDIT NEW",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUwOTcyMDkxLCJleHAiOjE2NTEwNTg0OTF9.StMFuWw4fqdUC04EFjnZQxB9Uj_9DT7kiz0sD4ccCLQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\":\"segundo cambio cambiada\",\n    \"entradilla\":\"Noticia cambiada hyegre\",\n    \"topic\":\"\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/new/1",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"new",
+						"1"
 					]
 				}
 			},

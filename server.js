@@ -15,6 +15,15 @@ const {
 const {
   validateUserController,
 } = require("./controllers/users/validateUserController");
+const { authUser } = require("./middlewares/authUser");
+const {
+  createNewController,
+} = require("./controllers/news/createNewController");
+const {
+  deleteNewController,
+} = require("./controllers/news/deleteNewController");
+const { editNew } = require("./db/news");
+const { editNewController } = require("./controllers/news/editNewController");
 
 const app = express();
 app.use(morgan("dev"));
@@ -31,6 +40,12 @@ app.post("/users", createUserController);
 app.post("/users/login", loginUserController);
 
 app.get("/users/validate/:registrationCode", validateUserController);
+
+app.post("/new", authUser, createNewController);
+
+app.put("/new/:idNew(\\d+)", authUser, editNewController);
+
+app.delete("/new/:idNew(\\d+)", authUser, deleteNewController);
 
 app.use((req, res) => {
   res.statusCode = 404;
