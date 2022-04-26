@@ -3,7 +3,7 @@ const sharp = require("sharp");
 const uuid = require("uuid");
 const fs = require("fs").promises;
 
-const avatarUploadPath = path.join(__dirname, process.env.AVATAR_DIR);
+const avatarUploadPath = path.join(__dirname, "../", process.env.AVATAR_DIR);
 
 const processAndSaveAvatar = async (avatarData) => {
   await fs.mkdir(avatarUploadPath, { recursive: true });

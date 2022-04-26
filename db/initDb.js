@@ -66,10 +66,9 @@ async function main() {
 
     await connection.query(`
       CREATE TABLE news_votes (
-        id INTEGER PRIMARY KEY AUTO_INCREMENT,
         user_id INTEGER NOT NULL,
         new_id INTEGER NOT NULL,
-        vote TINYINT NOT NULL,
+        PRIMARY KEY (user_id, new_id),
         FOREIGN KEY (new_id) REFERENCES news (id),
         FOREIGN KEY (user_id) REFERENCES users (id)
       )

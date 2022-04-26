@@ -1,4 +1,4 @@
-const { getUserbyId, createUserAvatar } = require("../../db/users.js");
+const { createUserAvatar, getUserById } = require("../../db/users.js");
 const { generateError } = require("../../helpers/generateError.js");
 
 const { processAndSaveAvatar } = require("../../helpers/processUserAvatar.js");
@@ -6,7 +6,7 @@ const { processAndSaveAvatar } = require("../../helpers/processUserAvatar.js");
 const uploadAvatarUserController = async (req, res, next) => {
   try {
     const { idUser } = req.params;
-    const user = await getUserbyId(idUser);
+    const user = await getUserById(idUser);
     if (!user) {
       throw generateError("Non exsite ningún usuario con esa id", 404);
     }

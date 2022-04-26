@@ -55,4 +55,5 @@ const createAndEditNewSchema = Joi.object().keys({
 
 module.exports = {
   createAndEditNewSchema,
+  topics,
 };

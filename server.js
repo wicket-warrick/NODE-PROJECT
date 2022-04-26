@@ -1,6 +1,5 @@
 require("dotenv").config();
 
-// const authUser = require("./middlewares/authUser.js");
 const morgan = require("morgan");
 const fileUpLoad = require("express-fileupload");
 const express = require("express");
@@ -22,8 +21,26 @@ const {
 const {
   deleteNewController,
 } = require("./controllers/news/deleteNewController");
-const { editNew } = require("./db/news");
+const { editNew, getNewsBeforeToday } = require("./db/news");
 const { editNewController } = require("./controllers/news/editNewController");
+const {
+  getNewsByTopicController,
+} = require("./controllers/news/listNewsByTopicController");
+const {
+  listNewsBeforeTodayController,
+} = require("./controllers/news/listNewsBeforeTodayController");
+const uploadAvatarUserController = require("./controllers/users/uploadAvatarUserController");
+const uploadPhotoNewController = require("./controllers/news/uploadPhotoNewsController");
+const {
+  listPhotosInNewController,
+} = require("./controllers/news/listPhotosInNewController");
+const {
+  deleteNewPhotoController,
+} = require("./controllers/news/deleteNewPhotoController");
+const { voteNewController } = require("./controllers/news/voteNewController");
+const {
+  listLastNewsByVotesController,
+} = require("./controllers/news/listLastNewsByVotesController");
 
 const app = express();
 app.use(morgan("dev"));
@@ -39,6 +56,8 @@ app.post("/users", createUserController);
 
 app.post("/users/login", loginUserController);
 
+app.post("/user/:idUser(\\d+)/avatar", authUser, uploadAvatarUserController);
+
 app.get("/users/validate/:registrationCode", validateUserController);
 
 app.post("/new", authUser, createNewController);
@@ -46,6 +65,20 @@ app.post("/new", authUser, createNewController);
 app.put("/new/:idNew(\\d+)", authUser, editNewController);
 
 app.delete("/new/:idNew(\\d+)", authUser, deleteNewController);
+
+app.get("/new/:idNew(\\d+)/photo", authUser, listPhotosInNewController);
+
+app.get("/news/votes/", listLastNewsByVotesController);
+app.get("/news/:topic", getNewsByTopicController);
+
+app.post("/new/:idNew(\\d+)/photo", authUser, uploadPhotoNewController);
+app.delete(
+  "/new/:idNew(\\d+)/photos/:idPhoto",
+  authUser,
+  deleteNewPhotoController
+);
+app.get("/news/", listNewsBeforeTodayController);
+app.post("/new/:idNew(\\d+)/vote", authUser, voteNewController);
 
 app.use((req, res) => {
   res.statusCode = 404;

@@ -1,3 +1,4 @@
+const { generateError } = require("../helpers/generateError.js");
 const { createAndEditNewSchema } = require("../validators/newValidator.js");
 const { getConnection } = require("./db.js");
 
@@ -65,6 +66,69 @@ const getNewById = async (id) => {
   }
 };
 
+const getNewsByTopic = async (topic) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const [results] = await connection.query(
+      "SELECT title,entradilla,user_id as author,createdAt FROM news WHERE topic = ? ORDER BY modifiedAt DESC;",
+      [topic]
+    );
+
+    return results;
+  } catch (error) {
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+
+const getNewsBeforeToday = async (modifiedAt) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const [results] = await connection.query(
+      "SELECT  title,entradilla,user_id as author ,modifiedAt FROM news WHERE modifiedAt < ?",
+      [modifiedAt]
+    );
+
+    return results;
+  } catch (error) {
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+
+const getLastNewsOrderByVotes = async (modifiedAt) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const [results] = await connection.query(
+      "SELECT title,entradilla,id ,COUNT(*) FROM news n LEFT JOIN news_votes nv ON n.id=nv.new_id  WHERE modifiedAt < ? GROUP BY n.id ORDER BY COUNT(new_id) DESC ;",
+      [modifiedAt]
+    );
+
+    return results;
+  } catch (error) {
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+
 const editNew = async (id, title, description, entradilla, topic) => {
   let connection;
 
@@ -120,5 +184,111 @@ const editNew = async (id, title, description, entradilla, topic) => {
     }
   }
 };
+const createNewPhoto = async (newId, url) => {
+  let connection;
+  try {
+    connection = await getConnection();
+    await connection.query("INSERT INTO news_images(new_id,url)VALUES(?,?);", [
+      newId,
+      url,
+    ]);
+  } catch (error) {
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+const getPhotosInNew = async (id) => {
+  let connection;
+  try {
+    connection = await getConnection();
 
-module.exports = { createNew, deleteNew, getNewById, editNew };
+    const result = connection.query(
+      "SELECT id, url FROM news_images WHERE new_id = ?",
+      [id]
+    );
+
+    return result;
+  } catch (error) {
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+const getNewPhotoById = async (id) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const [results] = await connection.query(
+      "SELECT id, url FROM news_images WHERE id = ?;",
+      [id]
+    );
+
+    return results[0];
+  } catch (error) {
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+const deletePhotoById = async (id) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    await connection.query("DELETE FROM news_images WHERE id = ?;", [id]);
+  } catch (error) {
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+const voteNew = async (userId, newId) => {
+  let connection;
+  try {
+    connection = await getConnection();
+    await connection.query(
+      "INSERT INTO news_votes(user_id,new_id)VALUES(?,?);",
+      [userId, newId]
+    );
+  } catch (error) {
+    if (error.errno === 1062) {
+      throw generateError(
+        "Ya has votado a esta noticia y solo puedes votar una vez cada noticia",
+        400
+      );
+    } else {
+      throw error;
+    }
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+
+module.exports = {
+  createNew,
+  deleteNew,
+  getNewById,
+  editNew,
+  getNewsByTopic,
+  getNewsBeforeToday,
+  createNewPhoto,
+  getNewPhotoById,
+  getPhotosInNew,
+  deletePhotoById,
+  voteNew,
+  getLastNewsOrderByVotes,
+};
