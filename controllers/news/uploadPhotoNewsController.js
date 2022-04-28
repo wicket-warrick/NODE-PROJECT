@@ -10,7 +10,7 @@ const uploadPhotoNewController = async (req, res, next) => {
       throw generateError("Non exsite ninguna noticia con esa id", 404);
     }
     if (New.id != req.auth.id) {
-      throw generateError("No tienes permisos para editar esta noticia", 403);
+      throw generateError("Non tes permisos para editar esta noticia", 403);
     }
     if (req.files && req.files.photo) {
       try {
@@ -18,17 +18,17 @@ const uploadPhotoNewController = async (req, res, next) => {
         await createNewPhoto(idNew, processedPhoto);
       } catch (err) {
         throw generateError(
-          "Ha habido un problema guardando la Photo, inténtalo de nuevo",
+          "Houbo un problema gardando a Photo, inténtalo de novo",
           500
         );
       }
     } else {
-      throw generateError("No se ha subido una Photo con el valor photo", 400);
+      throw generateError("Non hai hai ningún documento para subir", 400);
     }
 
     res.send({
       status: "ok",
-      message: "La Photo se ha subido correctamente",
+      message: "A Photo se ha subido correctamente",
     });
   } catch (error) {
     next(error);

@@ -21,17 +21,17 @@ const uploadAvatarUserController = async (req, res, next) => {
         await createUserAvatar(idUser, processedAvatar);
       } catch (err) {
         throw generateError(
-          "Ha habido un problema guardando la avatar, inténtalo de nuevo",
+          "Houbo un problema gardando o avatar, inténtalo de novo",
           500
         );
       }
     } else {
-      throw generateError("No se ha subido una avatar con el valor photo", 400);
+      throw generateError("Non hai ningún avatar para subir", 400);
     }
 
     res.send({
       status: "ok",
-      message: "La avatar se ha subido correctamente",
+      message: "O avatar subiuse correctamente",
     });
   } catch (error) {
     next(error);

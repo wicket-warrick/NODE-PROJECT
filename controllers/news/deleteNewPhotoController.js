@@ -15,21 +15,21 @@ const deleteNewPhotoController = async (req, res, next) => {
     const New = await getNewById(idNew);
 
     if (!New) {
-      throw generateError("No existe una noticia con ese ID", 404);
+      throw generateError("Non existe unha noticia con ese ID", 404);
     }
 
     if (New.user_id != req.auth.id) {
-      throw generateError("No tienes permisos para editar esta noticia", 403);
+      throw generateError("Non tes os permisos para editar esta noticia", 403);
     }
 
     const photo = await getNewPhotoById(idPhoto);
 
     if (!photo) {
-      throw generateError("No existe una imagen con ese ID", 404);
+      throw generateError("Non existe unha imagen con ese ID", 404);
     }
 
-    // borrar imagen de la base de datos y del sistema
     await deletePhotoById(idPhoto);
+
     await deletePhotoFromSystem(photo.url);
 
     res.send({

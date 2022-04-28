@@ -23,7 +23,7 @@ const createUserController = async (req, res, next) => {
       await sendEmail(
         email,
         "Valida a tua conta de usuario",
-        `Para validar clic aqui ${validationUrl}`
+        `Para validar fai clic aqui ${validationUrl}`
       );
     } catch (error) {
       throw generateError("erro de envio de email para activacion");

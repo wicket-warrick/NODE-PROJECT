@@ -3,26 +3,21 @@ const { generateError } = require("../../helpers/generateError");
 //const { createAndEditNewSchema } = require("../../validators/newValidator");
 
 const editNewController = async (req, res, next) => {
-  console.log("hola");
   try {
     const { idNew } = req.params;
 
     if (isNaN(parseInt(idNew))) {
-      throw generateError(
-        "El parámetro de la url idNew tiene que ser un número",
-        400
-      );
+      throw generateError("O parámetro id debe ser un número", 400);
     }
 
     const newToEdit = await getNewById(idNew);
     if (!newToEdit) {
-      throw generateError("No existe una noticia con ese ID", 404);
+      throw generateError("Non existe unha noticia con este ID", 404);
     }
 
     if (newToEdit.user_id != req.auth.id) {
-      throw generateError("No tienes permisos para editar esta entrada", 403);
+      throw generateError("Non tes os permisos para editar esta noticia", 403);
     }
-    // await createAndEditNewSchema.validateAsync(req.body);
 
     const { title, description, entradilla, topic } = req.body;
 
@@ -30,7 +25,7 @@ const editNewController = async (req, res, next) => {
 
     res.send({
       status: "ok",
-      message: "Noticia actualizado.",
+      message: "Noticia actualizada.",
     });
   } catch (error) {
     next(error);

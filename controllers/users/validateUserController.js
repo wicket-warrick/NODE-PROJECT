@@ -9,7 +9,7 @@ const validateUserController = async (req, res, next) => {
 
     if (!user) {
       throw generateError(
-        "non existe ningún usuario pendiente de activacion con ese código",
+        "Non existe ningún usuario pendiente de activacion con ese código",
         404
       );
     }

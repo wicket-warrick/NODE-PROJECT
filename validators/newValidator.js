@@ -33,18 +33,7 @@ const createAndEditNewSchema = Joi.object().keys({
       generateError("Extension mínima de 15 caracteres e maxima 100 ", 400)
     ),
   topic: Joi.string()
-    .valid(
-      "politica",
-      "espana",
-      "deportes",
-      "tecnologia",
-      "viajes",
-      "salud",
-      "economia",
-      "entretenimiento",
-      "internacional",
-      "galicia"
-    )
+    .valid(...topics)
     .error(
       generateError(
         `Este campo é obrigatorio e debe estar contido dentro de esta lista:${topics}`,

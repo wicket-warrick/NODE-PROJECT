@@ -8,7 +8,7 @@ const getNewsByTopicController = async (req, res, next) => {
 
     if (!topics.includes(topic)) {
       throw generateError(
-        `El parámetro de la url topic tiene que estar incluido en:${topics}`,
+        `O parámetro topic debe estar ser un dos seguintes:${topics}`,
         400
       );
     }
@@ -16,7 +16,7 @@ const getNewsByTopicController = async (req, res, next) => {
     const newsByTopic = await getNewsByTopic(topic);
 
     if (!newsByTopic) {
-      throw generateError("No existen noticias sobre ese tema", 404);
+      throw generateError("Non existen noticias sobre ese tema", 404);
     }
 
     res.send({
