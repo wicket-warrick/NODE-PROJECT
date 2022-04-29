@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"xxxxxxxxxxxx\",\n    \"email\":\"xxxxxxxxxx@mail.com\",\n    \"password\":\"xxxxxxxxxx\",\n    \"bio\":\"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam provident quaerat tempore eligendi, deserunt, sequi perspiciatis dolore quasi dolorum explicabo ad dolorem fuga, in aperiam. Fugiat reiciendis velit ipsa maiores.\"\n}",
+							"raw": "{\n    \"name\":\"HugoSuarez\",\n    \"email\":\"hugolgsuarez@gmail.com\",\n    \"password\":\"1234asdf\",\n    \"bio\":\"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam provident quaerat tempore eligendi, deserunt, sequi perspiciatis dolore quasi dolorum explicabo ad dolorem fuga, in aperiam. Fugiat reiciendis velit ipsa maiores.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -42,7 +42,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/user/validate/",
+							"raw": "localhost:3000/user/validate/610b91b7-bf69-4566-879b-5d0ac9ad34b1",
 							"host": [
 								"localhost"
 							],
@@ -50,7 +50,7 @@
 							"path": [
 								"user",
 								"validate",
-								""
+								"610b91b7-bf69-4566-879b-5d0ac9ad34b1"
 							]
 						},
 						"description": "Validación de usuario, a través de código de activación en URL.\nO código de activación , recibese na conta email coa que se fixo o rexistro"
@@ -63,7 +63,7 @@
 						"method": "POST",
 						"header": [
 							{
-								"key": "Authorization",
+								"key": "",
 								"value": "",
 								"type": "text",
 								"disabled": true
@@ -71,7 +71,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\":\"xxxxxxxxxxxx@mail.com\",\n    \"password\":\"xxxxxxxxxxxxx\"\n}\n",
+							"raw": "{\n    \"email\":\"hugolgsuarez@gmail.com\",\n    \"password\":\"1234asdf\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -209,14 +209,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text",
-								"disabled": true
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUxMjE2MjQyLCJleHAiOjE2NTEzMDI2NDJ9.vmH_ef_UHLrCpHyWT4ZfJyqoDUxNAB3Avi36cnMlClw",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"title\":\"titulo\",\n    \"description\":\"cambio de noticia cambio de noticia cambio de noticia\",\n    \"entradilla\":\"cambio de noticia cambio de noticia cambio de noticia\",\n    \"topic\":\"tecnologia\"\n}",
+							"raw": "{\n    \"title\":\"cambio de noticia cambio de noticia cambio de noticia\",\n    \"description\":\"cambio de noticia cambio de noticia cambio de noticia\",\n    \"entradilla\":\"cambio de noticia cambio de noticia cambio de noticia\",\n    \"topic\":\"tecnologia\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -244,15 +243,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/news/topic/",
+							"raw": "{{basePath}}/news/topic",
 							"host": [
-								"localhost"
+								"{{basePath}}"
 							],
-							"port": "3000",
 							"path": [
 								"news",
-								"topic",
-								""
+								"topic"
 							],
 							"query": [
 								{
@@ -272,11 +269,10 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/news/data/",
+							"raw": "{{basePath}}/news/data/",
 							"host": [
-								"localhost"
+								"{{basePath}}"
 							],
-							"port": "3000",
 							"path": [
 								"news",
 								"data",
@@ -285,7 +281,7 @@
 							"query": [
 								{
 									"key": "modifiedAt",
-									"value": "2022-04-30",
+									"value": "2022-04-29",
 									"disabled": true
 								}
 							]
@@ -302,7 +298,7 @@
 							{
 								"key": "Authorization",
 								"type": "text",
-								"value": "",
+								"value": "Bearer xxxxxxxxxxxxxx",
 								"disabled": true
 							}
 						],
@@ -318,15 +314,20 @@
 							]
 						},
 						"url": {
-							"raw": "localhost:3000/new/1/photo",
+							"raw": "{{basePath}}/new/photo",
 							"host": [
-								"localhost"
+								"{{basePath}}"
 							],
-							"port": "3000",
 							"path": [
 								"new",
-								"1",
 								"photo"
+							],
+							"query": [
+								{
+									"key": "idNew",
+									"value": "2",
+									"disabled": true
+								}
 							]
 						},
 						"description": "Subir unha foto a unha noticia.Necesita autenticación"
@@ -339,25 +340,29 @@
 						"method": "GET",
 						"header": [
 							{
-								"key": "Authorization",
+								"key": "",
 								"type": "text",
 								"value": "",
 								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/new/1/photo",
+							"raw": "{{basePath}}/new/photos?idNew=2",
 							"host": [
-								"localhost"
+								"{{basePath}}"
 							],
-							"port": "3000",
 							"path": [
 								"new",
-								"1",
-								"photo"
+								"photos"
+							],
+							"query": [
+								{
+									"key": "idNew",
+									"value": "2"
+								}
 							]
 						},
-						"description": "Listado de fotos contidas nunha noticia.Necesita auntenticación."
+						"description": "Listado de fotos contidas nunha noticia"
 					},
 					"response": []
 				},
@@ -369,21 +374,31 @@
 							{
 								"key": "Authorization",
 								"type": "text",
-								"value": "",
+								"value": "Bearer xxxxxxxxxxxxxxxxx",
 								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/new/1/photos/1",
+							"raw": "{{basePath}}/new/photo/",
 							"host": [
-								"localhost"
+								"{{basePath}}"
 							],
-							"port": "3000",
 							"path": [
 								"new",
-								"1",
-								"photos",
-								"1"
+								"photo",
+								""
+							],
+							"query": [
+								{
+									"key": "idNew",
+									"value": "x",
+									"disabled": true
+								},
+								{
+									"key": "idPhoto",
+									"value": "x",
+									"disabled": true
+								}
 							]
 						},
 						"description": "Borrado de unha imaxe dunha noticia en concreto. Necesita autenticación."
@@ -398,20 +413,25 @@
 							{
 								"key": "Authorization",
 								"type": "text",
-								"value": "",
+								"value": "Bearer xxxxx",
 								"disabled": true
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/new/1/vote",
+							"raw": "{{basePath}}/new/vote",
 							"host": [
-								"localhost"
+								"{{basePath}}"
 							],
-							"port": "3000",
 							"path": [
 								"new",
-								"1",
 								"vote"
+							],
+							"query": [
+								{
+									"key": "idNew",
+									"value": "x",
+									"disabled": true
+								}
 							]
 						},
 						"description": "Votar noticia.Necesita autenticación."
@@ -419,16 +439,15 @@
 					"response": []
 				},
 				{
-					"name": "LIST NEWS ORDERED BY votes",
+					"name": "LIST NEWS ORDERED BY vote",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/news/votes",
+							"raw": "{{basePath}}/news/votes",
 							"host": [
-								"localhost"
+								"{{basePath}}"
 							],
-							"port": "3000",
 							"path": [
 								"news",
 								"votes"
