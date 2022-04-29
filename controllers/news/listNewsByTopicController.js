@@ -4,11 +4,11 @@ const { topics } = require("../../validators/newValidator");
 
 const getNewsByTopicController = async (req, res, next) => {
   try {
-    const { topic } = req.params;
+    const { topic } = req.query;
 
     if (!topics.includes(topic)) {
       throw generateError(
-        `O parámetro topic debe estar ser un dos seguintes:${topics}`,
+        `O parámetro topic debe  ser un dos seguintes:${topics}`,
         400
       );
     }

@@ -25,7 +25,7 @@ const deleteNewPhotoController = async (req, res, next) => {
     const photo = await getNewPhotoById(idPhoto);
 
     if (!photo) {
-      throw generateError("Non existe unha imagen con ese ID", 404);
+      throw generateError("Non existe unha imaxe con esa ID", 404);
     }
 
     await deletePhotoById(idPhoto);

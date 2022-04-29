@@ -8,7 +8,7 @@ const uploadAvatarUserController = async (req, res, next) => {
     const { idUser } = req.params;
     const user = await getUserById(idUser);
     if (!user) {
-      throw generateError("Non exsite ningún usuario con esa id", 404);
+      throw generateError("Non exsite ningún usuario con esa ID", 404);
     }
     if (user.id != req.auth.id) {
       throw generateError("No tienes permisos para editar este usuario", 403);

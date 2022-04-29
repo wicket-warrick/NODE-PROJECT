@@ -7,12 +7,12 @@ const editNewController = async (req, res, next) => {
     const { idNew } = req.params;
 
     if (isNaN(parseInt(idNew))) {
-      throw generateError("O parámetro id debe ser un número", 400);
+      throw generateError("O parámetro ID debe ser un número", 400);
     }
 
     const newToEdit = await getNewById(idNew);
     if (!newToEdit) {
-      throw generateError("Non existe unha noticia con este ID", 404);
+      throw generateError("Non existe unha noticia con esa ID", 404);
     }
 
     if (newToEdit.user_id != req.auth.id) {

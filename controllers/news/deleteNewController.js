@@ -6,11 +6,11 @@ const deleteNewController = async (req, res, next) => {
     const { idNew } = req.params;
 
     if (isNaN(parseInt(idNew))) {
-      throw generateError("O parámetro id da noticia debe ser un número", 400);
+      throw generateError("O parámetro ID da noticia debe ser un número", 400);
     }
     const newToDelete = await getNewById(idNew);
     if (!newToDelete) {
-      throw generateError("Non existe unha noticia con ese ID", 404);
+      throw generateError("Non existe unha noticia con esa ID", 404);
     }
 
     if (newToDelete.user_id != req.auth.id) {

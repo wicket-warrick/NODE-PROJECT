@@ -32,7 +32,7 @@ const editNew = async (id, title, description, entradilla, topic) => {
     );
 
     if (currentNew.length === 0) {
-      throw generateError(`A noticia co id: ${id} non existe.`, 404);
+      throw generateError(`A noticia co ID: ${id} non existe.`, 404);
     }
 
     if (title === "") {
@@ -57,6 +57,7 @@ const editNew = async (id, title, description, entradilla, topic) => {
       entradilla,
       topic,
     };
+
     await createAndEditNewSchema.validateAsync(newData);
 
     await connection.query(
@@ -84,7 +85,7 @@ const deleteNew = async (id) => {
     );
 
     if (selectedNew.length === 0) {
-      throw generateError(`A notica con id: ${id} non existe.`, 404);
+      throw generateError(`A notica con ID: ${id} non existe.`, 404);
     }
 
     await connection.query("DELETE FROM news WHERE id = ?;", [id]);

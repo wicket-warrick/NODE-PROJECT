@@ -17,26 +17,37 @@ const createAndEditNewSchema = Joi.object().keys({
     .min(1)
     .max(50)
     .required()
-    .error(generateError("O campo title é obigatorio ", 400)),
+    .error(
+      generateError(
+        "O campo title é obigatorio, e ten un máximo de 50 caracteres ",
+        400
+      )
+    ),
   description: Joi.string()
     .min(50)
     .max(800)
     .required()
     .error(
-      generateError("campo obrgatrio e extension maxima 800 caracteres", 400)
+      generateError(
+        "O campo 'description' é obrgatrio e extension mínima de 50 caracteres e maxima de 800",
+        400
+      )
     ),
   entradilla: Joi.string()
     .min(15)
     .max(100)
     .optional()
     .error(
-      generateError("Extension mínima de 15 caracteres e maxima 100 ", 400)
+      generateError(
+        "A entradilla debe ter un mínimo de 15 caracteres  e maxima 100 ",
+        400
+      )
     ),
   topic: Joi.string()
     .valid(...topics)
     .error(
       generateError(
-        `Este campo é obrigatorio e debe estar contido dentro de esta lista:${topics}`,
+        `O campo 'topic' é obrigatorio e debe estar contido dentro de esta lista:${topics}`,
         400
       )
     ),

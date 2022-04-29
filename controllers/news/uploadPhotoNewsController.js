@@ -7,7 +7,7 @@ const uploadPhotoNewController = async (req, res, next) => {
     const { idNew } = req.params;
     const New = await getNewById(idNew);
     if (!New) {
-      throw generateError("Non exsite ninguna noticia con esa id", 404);
+      throw generateError("Non exsite ninguna noticia con esa ID", 404);
     }
     if (New.id != req.auth.id) {
       throw generateError("Non tes permisos para editar esta noticia", 403);
@@ -28,7 +28,7 @@ const uploadPhotoNewController = async (req, res, next) => {
 
     res.send({
       status: "ok",
-      message: "A Photo se ha subido correctamente",
+      message: "A imaxe subiuse correctamente",
     });
   } catch (error) {
     next(error);

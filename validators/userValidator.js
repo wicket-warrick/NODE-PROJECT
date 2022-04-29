@@ -18,7 +18,7 @@ const newUserSchema = Joi.object().keys({
     .required()
     .error(
       generateError(
-        "o campo 'name' é obrigatorio e debe ter 3 caracateres como min",
+        "o campo 'name' é obrigatorio e debe ter 3 caracateres como min e un maximo de 15",
         400
       )
     ),

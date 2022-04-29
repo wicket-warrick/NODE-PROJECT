@@ -71,11 +71,11 @@ app.use(fileUpLoad());
 //   })
 // );
 
-app.post("/users", createUserController);
+app.post("/user", createUserController);
 
-app.post("/users/login", loginUserController);
+app.post("/user/login", loginUserController);
 
-app.get("/users/validate/:registrationCode", validateUserController);
+app.get("/user/validate/:registrationCode", validateUserController);
 
 app.post("/user/:idUser(\\d+)/avatar", authUser, uploadAvatarUserController);
 
@@ -87,9 +87,9 @@ app.delete("/new/:idNew(\\d+)", authUser, deleteNewController);
 
 app.get("/news/votes/", listLastNewsByVotesController);
 
-app.get("/news/", listNewsBeforeTodayController);
+app.get("/news/data", listNewsBeforeTodayController);
 
-app.get("/news/:topic", getNewsByTopicController);
+app.get("/news/topic/", getNewsByTopicController);
 
 app.post("/new/:idNew(\\d+)/photo", authUser, uploadPhotoNewController);
 
