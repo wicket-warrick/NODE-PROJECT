@@ -27,6 +27,7 @@ async function main() {
         name VARCHAR(100) NOT NULL,
         active BOOLEAN DEFAULT false,
         registrationCode VARCHAR(100),
+        passwordUpdateCode VARCHAR(100),
         bio TEXT,
         createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
       );

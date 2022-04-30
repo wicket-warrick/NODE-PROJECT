@@ -58,6 +58,9 @@ const { voteNewController } = require("./controllers/news/voteNewController");
 const {
   listLastNewsByVotesController,
 } = require("./controllers/news/listLastNewsByVotesController");
+const { recoveryUserPasswordSchema } = require("./validators/userValidator");
+const recoveryUserPasswordController = require("./controllers/users/recoveryUserPasswordController");
+const resetUserPasswordController = require("./controllers/users/resetUserPasswordController");
 
 const app = express();
 
@@ -102,6 +105,10 @@ app.delete(
 app.get("/new/:idNew(\\d+)/photo", authUser, listPhotosInNewController);
 
 app.post("/new/:idNew(\\d+)/vote", authUser, voteNewController);
+
+app.post("/user/recoverypassword", recoveryUserPasswordController);
+
+app.post("/user/resetpassword", resetUserPasswordController);
 
 app.use((req, res) => {
   res.statusCode = 404;

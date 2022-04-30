@@ -1,6 +1,7 @@
 const { generateError } = require("../helpers/generateError");
 const { getConnection } = require("./db");
 const uuid = require("uuid");
+const randomString = require("randomstring");
 
 const createUser = async (name, email, password, bio = "") => {
   let connection;
@@ -121,6 +122,80 @@ const createUserAvatar = async (userId, url) => {
     }
   }
 };
+const updateUserRecoverCode = async (email) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const recoverCode = randomString.generate(40);
+
+    await connection.query(
+      `
+      UPDATE users
+      SET passwordUpdateCode=?
+      WHERE email=?
+    `,
+      [recoverCode, email]
+    );
+
+    return recoverCode;
+  } catch (error) {
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+
+const getUserByRecoverCode = async (code) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const [result] = await connection.query(
+      `
+      SELECT id
+      FROM users
+      WHERE passwordUpdateCode = ?
+    `,
+      [code]
+    );
+
+    return result[0];
+  } catch (error) {
+    console.error(error);
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+
+const changeUserPassword = async (userId, newPassword) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    await connection.query(
+      `
+      UPDATE users
+      SET password = ?, passwordUpdateCode = NULL
+      WHERE id = ?
+    `,
+      [newPassword, userId]
+    );
+  } catch (error) {
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
 
 module.exports = {
   createUser,
@@ -129,4 +204,7 @@ module.exports = {
   createUserAvatar,
   getUserById,
   getUserByEmail,
+  updateUserRecoverCode,
+  changeUserPassword,
+  getUserByRecoverCode,
 };
