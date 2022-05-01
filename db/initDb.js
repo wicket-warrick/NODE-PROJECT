@@ -76,7 +76,7 @@ async function main() {
   } catch (error) {
     console.error(error);
   } finally {
-    console.log("Todo hecho, liberando conexión");
+    console.log("Traballo feito, liberando conexión");
     if (connection) connection.release();
     process.exit();
   }
