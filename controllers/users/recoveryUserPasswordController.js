@@ -12,7 +12,6 @@ const recoveryUserPasswordController = async (req, res, next) => {
 
     const { email } = req.body;
 
-    // Comprobar que hay un usuario con id 12
     const user = await getUserByEmail(email);
 
     if (!user) {
@@ -22,10 +21,8 @@ const recoveryUserPasswordController = async (req, res, next) => {
       );
     }
 
-    // Introducir en la fila del usuario un código aleatorio
     const recoverCode = await updateUserRecoverCode(email);
 
-    // Enviar ese código por email
     try {
       await sendEmail(
         email,
@@ -39,7 +36,6 @@ const recoveryUserPasswordController = async (req, res, next) => {
       throw generateError("Erro de envío de email", 500);
     }
 
-    // Responder al usuario
     res.send({
       status: "ok",
       message: "Enviouse un email á conta de coarreo asociada có usuario ",
