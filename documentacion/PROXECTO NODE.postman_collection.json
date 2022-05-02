@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "41bf08a9-f57b-438b-91cf-75bc8a38b42c",
-		"name": "PROXECTO NODE",
+		"_postman_id": "6d5b7782-9af5-4404-aa3e-6d65faeadd00",
+		"name": "PROXECTO NODE Copy",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -190,19 +190,20 @@
 					"response": []
 				},
 				{
-					"name": "EDIT USER",
+					"name": "EDIT USER BY idUser",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
+								"type": "text",
 								"value": "",
-								"type": "text"
+								"disabled": true
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"Juan Juantio\",\n    \"email\":\"juancano14.4@gmail.com\",\n    \"bio\":\"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam provident quaerat tempore eligendi, deserunt, sequi perspiciatis dolore quasi dolorum explicabo ad dolorem fuga, in aperiam. Fugiat reiciendis velit ipsa maiores.\"\n}",
+							"raw": "{\n    \"name\":\"xxxxxxxxxxxxxx\",\n    \"email\":\"xxxxxxxxxxxxx@mail.com\",\n    \"bio\":\"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam provident quaerat tempore eligendi, deserunt, sequi perspiciatis dolore quasi dolorum explicabo ad dolorem fuga, in aperiam. Fugiat reiciendis velit ipsa maiores.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -219,19 +220,20 @@
 								"user",
 								"1"
 							]
-						}
+						},
+						"description": "Edicion de usuario.Necesita autenticación."
 					},
 					"response": []
 				},
 				{
-					"name": "DELETE USER",
+					"name": "DELETE USER BY idUser",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "",
-								"type": "text"
+								"type": "text",
+								"value": ""
 							}
 						],
 						"url": {
@@ -244,19 +246,21 @@
 								"user",
 								"1"
 							]
-						}
+						},
+						"description": "Borrado de usuario.Necesita autenticación."
 					},
 					"response": []
 				},
 				{
-					"name": "DELETE USER AVATAR",
+					"name": "DELETE USER AVATAR BY idUser/idAvatar",
 					"request": {
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
 								"value": "",
-								"type": "text"
+								"type": "text",
+								"disabled": true
 							}
 						],
 						"url": {
@@ -271,7 +275,8 @@
 								"avatar",
 								"1"
 							]
-						}
+						},
+						"description": "Borrado de avatar.Necesita autenticación."
 					},
 					"response": []
 				},

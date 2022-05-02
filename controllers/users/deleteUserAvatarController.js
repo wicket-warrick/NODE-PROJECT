@@ -4,8 +4,8 @@ const {
   deleteAvatarById,
 } = require("../../db/users");
 const {
-  deleteImageFromSystem,
-} = require("../../helpers/deleteImageFromSystem");
+  deletePhotoFromSystem,
+} = require("../../helpers/deletePhotoFromSystem");
 const { generateError } = require("../../helpers/generateError");
 
 const deleteUseAvatarController = async (req, res, next) => {
@@ -30,7 +30,7 @@ const deleteUseAvatarController = async (req, res, next) => {
 
     await deleteAvatarById(idAvatar);
 
-    await deleteImageFromSystem(avatar.url);
+    await deletePhotoFromSystem(avatar.url);
 
     res.send({
       status: "ok",

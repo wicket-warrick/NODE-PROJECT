@@ -150,29 +150,6 @@ const updateUserRecoverCode = async (email) => {
   }
 };
 
-const changeUserPassword = async (userId, newPassword) => {
-  let connection;
-
-  try {
-    connection = await getConnection();
-
-    await connection.query(
-      `
-      UPDATE users
-      SET password = ?, passwordUpdateCode = NULL
-      WHERE id = ?
-    `,
-      [newPassword, userId]
-    );
-  } catch (error) {
-    throw error;
-  } finally {
-    if (connection) {
-      connection.release();
-    }
-  }
-};
-
 const editUser = async (id, name, bio, email) => {
   let connection;
 

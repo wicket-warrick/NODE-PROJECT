@@ -61,15 +61,11 @@ const editUserSchema = Joi.object().keys({
         400
       )
     ),
-  password: Joi.string()
-    .min(8)
+  email: Joi.string()
+    .email()
     .required()
-    .error(
-      generateError(
-        "debe introducir un email válido e unha password de 8 dixitos como min",
-        400
-      )
-    ),
+    .error(generateError("debe introducir un email válido", 400)),
+
   bio: Joi.string()
     .max(500)
     .error(
@@ -85,7 +81,6 @@ const changeUserPasswordSchema = Joi.object().keys({
       generateError("debe introducir password de 8 dixitos como min", 400)
     ),
 });
-
 
 const recoveryUserPasswordSchema = Joi.object().keys({
   email: Joi.string()
