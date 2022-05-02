@@ -61,6 +61,18 @@ const {
 const { recoveryUserPasswordSchema } = require("./validators/userValidator");
 const recoveryUserPasswordController = require("./controllers/users/recoveryUserPasswordController");
 const resetUserPasswordController = require("./controllers/users/resetUserPasswordController");
+const {
+  editUserController,
+} = require("./controllers/users/editUserController");
+const {
+  changeUserPasswordController,
+} = require("./controllers/users/changeUserPassword");
+const {
+  deleteUserController,
+} = require("./controllers/users/deleteUserController");
+const {
+  deleteUseAvatarController,
+} = require("./controllers/users/deleteUserAvatarController");
 
 const app = express();
 
@@ -81,6 +93,18 @@ app.post("/user/login", loginUserController);
 app.get("/user/validate/:registrationCode", validateUserController);
 
 app.post("/user/:idUser(\\d+)/avatar", authUser, uploadAvatarUserController);
+
+app.put("/user/:idUser/password(\\d+)", authUser, changeUserPasswordController);
+
+app.put("/user/:idUser(\\d+)", authUser, editUserController);
+
+app.delete("/user/:idUser(\\d+)", authUser, deleteUserController);
+
+app.delete(
+  "/user/:idUser(\\d+)/avatar/:idAvatar",
+  authUser,
+  deleteUseAvatarController
+);
 
 app.post("/new", authUser, createNewController);
 

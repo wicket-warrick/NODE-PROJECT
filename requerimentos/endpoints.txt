@@ -3,37 +3,37 @@
 2.1.USUARIOS ANONIMOS
 
 -GET /entries24h
-    -Listado de todolos artículos 24 h anteriores á consulta
+    -Listado de todolos noticias 24 h anteriores á consulta
     -Autenticacion:non
-    -PathParams:
+    -Query Params:
         *timestamp de data de consulta
     -Orden por valoracion
-    -Retorna:informacion(Título,entradilla,author,topic) de todolos artículos(según Path Params)
+    -Retorna:informacion(Título,entradilla,author,topic) de todolos noticias(según Query Params//req.query) ordenadas por voto
 
 -GET /listentries/
-    -Listado de todolos artículos 
+    -Listado de todolas noticias antes dunha fecha
     -Autenticacion:non
     -Orden por data de creacion
-    -PathParams:
-        *definir en url createdBefore/createdAfter
-    -Retorna:informacion(Título,entradilla,author,topic) de todolos artículos(según PathParams)
+    -Query Params:
+        *definir en url createdBefore
+    -Retorna:informacion(Título,entradilla,author,topic) de todolos noticias(según Query Params//req.query)
 
--GET /entries/:topic
+-GET /entries/
     -Obter news dun topic en concreto
     -Orden por data de creacion
     -Autenticacion:no
-    -Path Params:
+    -Query Params:
         *topic
-    -Retorna:informacion(Título,entradilla,author,createdData) de todolos artículos
+    -Retorna:informacion(Título,entradilla,author,createdData) de todolos noticias  según o topic en Query Params//req.query
 
 2.2.USUARIOS REXISTRADOS
 
 -POST /entries
-    -Crear un articulo
+    -Crear un noticia
     -Autenticacion:si
     -Body:
-        *title:titulo do articulo
-        *contido:contido do articulo
+        *title:titulo do noticia
+        *contido:contido do noticia
         *entradilla
         *topic
     -Retorna: mensaxe de traballo feito ou non
@@ -41,48 +41,52 @@
 
 
 -PUT /entries/:idEntry
-    -Editar un articulo
+    -Editar un noticia
     -Autenticacion:si
         *precisará ser o autor
     -Body:
-        *title:titulo do articulo
-        *contido:contido do articulo
+        *title:titulo do noticia
+        *contido:contido do noticia
         *entradilla
         *topic
+    -Path Params:
+        *id_noticia
     --Retorna:mensaxe de modificacion ou non
 
 -DELETE /entries/:idEntry
-    -Borrar un artículo
+    -Borrar un noticia
     -Autenticacion:si
         *Precisará ser o autor
+    -Path Params:
+        *id_noticia
     -Retorna:mensaxe de borrado ou non
 
 -POST /entries/:idEntry/votes
-    -Votar un artículo
+    -Votar un noticia
     -Autenticacion:si
-    -Params Params:
-        *idEntry:id_articulo
+    -Path Params:
+        *idEntry:id_noticia
     -Body:
-        *vote: +1/-1
+        *vote
     -Retonra :mensaxe de voto gardado correctamente ou non
     
 
 -POST /entries/:idEntry/photos
-    -Agregar unha foto a un artículo
+    -Agregar unha foto a un noticia
     -Autenticacion:si
         *Precisará ser o autor
     -Path Params:
-        *idEntry:id_articulo
+        *idEntry:id_noticia
     -Body:
-        *photo:foto para agregar ó articulo
+        *photo:foto para agregar ó noticia
     -Retorna:mensaxe de subida correcta
 
 -DELETE /entries/:idEntry/photos/:idPhoto
-    -Borar foto dun articulo
+    -Borar foto dun noticia
     -Autenticacion:si
         *Precisará ser o autor 
     -Params Params:
-        ---------------------------------------*idEntry:id_articulo
+        *idEntry:id_noticia
         *idPhoto:id_imaxe
     -Retorna:mensaxe de borrado correcto ou non
 
@@ -111,7 +115,7 @@ POST /users
 -GET /users/validate/:registartionCode
     -Validar usuario, pendiente de activacion
     -Autenticacion:non
-    -Path   Params
+    -Path Params
         *registartionCode:codigo xerado no rexistro e enviado por mail
     -Retorna:mensaxe que indica se o usuario esta validado
 
@@ -134,6 +138,13 @@ XESTION USUARIO(OPCIONAL)-------------------------------------------------------
         *username
     -Retorna:mensaxe modficiación correcta
 
+-DELETE /users/:idUser
+    -Borar usuario dun noticia
+    -Autenticacion:si
+       *Precisará ser o autor ou ter o rol de admin
+    -Params Params:
+        *idUser:id_usuario
+    -Retorna:mensaxe de borrado correcto
 
 -PUT users/:idUser/pass
     -Editar pass de un usuario
@@ -144,14 +155,6 @@ XESTION USUARIO(OPCIONAL)-------------------------------------------------------
         *oldPass
         *newPass
     -Retorna:mensaxe pass cambiada con exito
-
--DELETE /users/:idUser
-    -Borar usuario dun articulo
-    -Autenticacion:si
-       *Precisará ser o autor ou ter o rol de admin
-    -Params Params:
-        *idUser:id_usuario
-    -Retorna:mensaxe de borrado correcto
 
 -POST/PUT /users/recover-pass
     -Enviar un email co codigo de recuperacion de contraseña
