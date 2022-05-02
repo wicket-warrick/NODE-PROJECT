@@ -1,6 +1,7 @@
 const { generateError } = require("../helpers/generateError");
 const { getConnection } = require("./db");
 const uuid = require("uuid");
+const randomString = require("randomstring");
 const { editUserSchema } = require("../validators/userValidator");
 
 const createUser = async (name, email, password, bio = "") => {
@@ -113,6 +114,55 @@ const createUserAvatar = async (userId, url) => {
     await connection.query(
       "INSERT INTO users_images(user_id,url)VALUES(?,?);",
       [userId, url]
+    );
+  } catch (error) {
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+const updateUserRecoverCode = async (email) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    const recoverCode = randomString.generate(40);
+
+    await connection.query(
+      `
+      UPDATE users
+      SET passwordUpdateCode=?
+      WHERE email=?
+    `,
+      [recoverCode, email]
+    );
+
+    return recoverCode;
+  } catch (error) {
+    throw error;
+  } finally {
+    if (connection) {
+      connection.release();
+    }
+  }
+};
+
+const changeUserPassword = async (userId, newPassword) => {
+  let connection;
+
+  try {
+    connection = await getConnection();
+
+    await connection.query(
+      `
+      UPDATE users
+      SET password = ?, passwordUpdateCode = NULL
+      WHERE id = ?
+    `,
+      [newPassword, userId]
     );
   } catch (error) {
     throw error;
@@ -285,6 +335,7 @@ module.exports = {
   createUserAvatar,
   getUserById,
   getUserByEmail,
+  updateUserRecoverCode,
   editUser,
   changeUserPassword,
   getUserByRecoverCode,

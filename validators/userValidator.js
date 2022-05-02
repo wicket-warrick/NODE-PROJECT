@@ -86,9 +86,42 @@ const changeUserPasswordSchema = Joi.object().keys({
     ),
 });
 
+
+const recoveryUserPasswordSchema = Joi.object().keys({
+  email: Joi.string()
+    .email()
+    .required()
+    .error(
+      generateError("O campo email, debe conter un campo email válido", 400)
+    ),
+});
+
+const resetUserPasswordSchema = Joi.object().keys({
+  recoverCode: Joi.string()
+    .length(40)
+    .required()
+    .error(
+      generateError(
+        "O campo recoverCode é obrigatorio e debe contar con 40 caracteres",
+        400
+      )
+    ),
+  newPassword: Joi.string()
+    .min(8)
+    .required()
+    .error(
+      generateError(
+        "O campo newPassword é obrigatorio e debe ter unha lonxitude minima de 8 caracteres",
+        400
+      )
+    ),
+});
+
 module.exports = {
   newUserSchema,
   loginUserSchema,
+  recoveryUserPasswordSchema,
+  resetUserPasswordSchema,
   editUserSchema,
   changeUserPasswordSchema,
 };
