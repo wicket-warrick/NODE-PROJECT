@@ -74,7 +74,13 @@ const editUserSchema = Joi.object().keys({
 });
 
 const changeUserPasswordSchema = Joi.object().keys({
-  password: Joi.string()
+  currentPassword: Joi.string()
+    .min(8)
+    .required()
+    .error(
+      generateError("debe introducir password de 8 dixitos como min", 400)
+    ),
+  newPassword: Joi.string()
     .min(8)
     .required()
     .error(

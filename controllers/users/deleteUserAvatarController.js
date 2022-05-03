@@ -4,8 +4,9 @@ const {
   deleteAvatarById,
 } = require("../../db/users");
 const {
-  deletePhotoFromSystem,
-} = require("../../helpers/deletePhotoFromSystem");
+  deleteAvatarFromSystem,
+} = require("../../helpers/deleteAvatarFromSystem");
+
 const { generateError } = require("../../helpers/generateError");
 
 const deleteUseAvatarController = async (req, res, next) => {
@@ -18,7 +19,7 @@ const deleteUseAvatarController = async (req, res, next) => {
       throw generateError("Non existe unha usuario con ese ID", 404);
     }
 
-    if (user.user_id != req.auth.id) {
+    if (user.id != req.auth.id) {
       throw generateError("Non tes os permisos para editar este usuario", 403);
     }
 
@@ -30,7 +31,7 @@ const deleteUseAvatarController = async (req, res, next) => {
 
     await deleteAvatarById(idAvatar);
 
-    await deletePhotoFromSystem(avatar.url);
+    await deleteAvatarFromSystem(avatar.url);
 
     res.send({
       status: "ok",

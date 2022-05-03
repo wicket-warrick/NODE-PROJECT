@@ -94,7 +94,7 @@ app.get("/user/validate/:registrationCode", validateUserController);
 
 app.post("/user/:idUser(\\d+)/avatar", authUser, uploadAvatarUserController);
 
-app.put("/user/:idUser/password(\\d+)", authUser, changeUserPasswordController);
+app.put("/user/:idUser(\\d+)/password", authUser, changeUserPasswordController);
 
 app.put("/user/:idUser(\\d+)", authUser, editUserController);
 

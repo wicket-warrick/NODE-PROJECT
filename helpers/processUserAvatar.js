@@ -18,4 +18,4 @@ const processAndSaveAvatar = async (avatarData) => {
   return avatarFileName;
 };
 
-module.exports = { processAndSaveAvatar };
+module.exports = { processAndSaveAvatar, avatarUploadPath };
