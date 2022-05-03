@@ -15,7 +15,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\":\"xxxxxxxxxxxx\",\n    \"email\":\"xxxxxxxxxx@mail.com\",\n    \"password\":\"xxxxxxxxxx\",\n    \"bio\":\"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam provident quaerat tempore eligendi, deserunt, sequi perspiciatis dolore quasi dolorum explicabo ad dolorem fuga, in aperiam. Fugiat reiciendis velit ipsa maiores.\"\n}",
+							"raw": "{\n    \"name\":\"xxxxxxxxxxxxxxxxx\",\n    \"email\":\"xxxxxxxxxxxx@mail.com\",\n    \"password\":\"1234asdf\",\n    \"bio\":\"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam provident quaerat tempore eligendi, deserunt, sequi perspiciatis dolore quasi dolorum explicabo ad dolorem fuga, in aperiam. Fugiat reiciendis velit ipsa maiores.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -278,6 +278,43 @@
 							]
 						},
 						"description": "Borrado de avatar.Necesita autenticación."
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE PASSWORD BY idUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"currentPassword\":\"xxxxxxxxxxxxx\",\n    \"newPassword\":\"xxxxxxxxxx\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/user/1/password",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"1",
+								"password"
+							]
+						},
+						"description": "Cambio de contrasinal.Necesita autenticación."
 					},
 					"response": []
 				}
