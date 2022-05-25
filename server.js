@@ -73,6 +73,7 @@ const {
 const {
   deleteUseAvatarController,
 } = require("./controllers/users/deleteUserAvatarController");
+const listNewsController = require("./controllers/news/listNewsController");
 
 const app = express();
 
@@ -114,9 +115,7 @@ app.delete("/new/:idNew(\\d+)", authUser, deleteNewController);
 
 app.get("/news/votes/", listLastNewsByVotesController);
 
-app.get("/news/data", listNewsBeforeTodayController);
-
-app.get("/news/topic/", getNewsByTopicController);
+app.get("/news", listNewsController);
 
 app.post("/new/:idNew(\\d+)/photo", authUser, uploadPhotoNewController);
 
@@ -126,7 +125,7 @@ app.delete(
   deleteNewPhotoController
 );
 
-app.get("/new/:idNew(\\d+)/photo", authUser, listPhotosInNewController);
+app.get("/new/:idNew(\\d+)/photo", listPhotosInNewController);
 
 app.post("/new/:idNew(\\d+)/vote", authUser, voteNewController);
 

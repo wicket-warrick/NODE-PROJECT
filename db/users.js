@@ -165,7 +165,7 @@ const editUser = async (id, name, bio, email) => {
       throw generateError(`Non existe un usuario con id: ${id}.`, 404);
     }
 
-    if (name === "") {
+    if (!name) {
       name = userToEdit[0].name;
     }
 

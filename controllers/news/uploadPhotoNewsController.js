@@ -9,7 +9,7 @@ const uploadPhotoNewController = async (req, res, next) => {
     if (!New) {
       throw generateError("Non exsite ninguna noticia con esa ID", 404);
     }
-    if (New.id != req.auth.id) {
+    if (New.user_id != req.auth.id) {
       throw generateError("Non tes permisos para editar esta noticia", 403);
     }
     if (req.files && req.files.photo) {

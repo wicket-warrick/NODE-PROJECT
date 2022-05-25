@@ -35,7 +35,7 @@ const editNew = async (id, title, description, entradilla, topic) => {
       throw generateError(`A noticia co ID: ${id} non existe.`, 404);
     }
 
-    if (title === "") {
+    if (!title) {
       title = currentNew[0].title;
     }
 
@@ -119,37 +119,71 @@ const getNewById = async (id) => {
   }
 };
 
-const getNewsByTopic = async (topic) => {
+// const getNewsByTopic = async (topic) => {
+//   let connection;
+
+//   try {
+//     connection = await getConnection();
+
+//     const [results] = await connection.query(
+//       "SELECT title,entradilla,user_id as author,createdAt FROM news WHERE topic = ? ORDER BY modifiedAt DESC;",
+//       [topic]
+//     );
+
+//     return results;
+//   } catch (error) {
+//     throw error;
+//   } finally {
+//     if (connection) {
+//       connection.release();
+//     }
+//   }
+// };
+
+// const getNewsBeforeToday = async (modifiedAt) => {
+//   let connection;
+
+//   try {
+//     connection = await getConnection();
+
+//     const [results] = await connection.query(
+//       "SELECT  title,entradilla,user_id as author ,modifiedAt FROM news WHERE modifiedAt < ?",
+//       [modifiedAt]
+//     );
+
+//     return results;
+//   } catch (error) {
+//     throw error;
+//   } finally {
+//     if (connection) {
+//       connection.release();
+//     }
+//   }
+// };
+
+const getAllNews = async (modifiedAt, topic) => {
   let connection;
 
   try {
     connection = await getConnection();
 
-    const [results] = await connection.query(
-      "SELECT title,entradilla,user_id as author,createdAt FROM news WHERE topic = ? ORDER BY modifiedAt DESC;",
-      [topic]
-    );
-
-    return results;
-  } catch (error) {
-    throw error;
-  } finally {
-    if (connection) {
-      connection.release();
+    let query =
+      "SELECT title,entradilla,user_id as author,createdAt FROM news ";
+    let clause = "WHERE";
+    const values = [];
+    if (modfiedAt) {
+      query = `${query} ${clause} modifiedAt < ?`;
+      clause = "AND";
+      values.push(modifiedAt);
     }
-  }
-};
 
-const getNewsBeforeToday = async (modifiedAt) => {
-  let connection;
+    if (topic) {
+      query = `${query} ${clause} topic = ?`;
+      clause = "AND";
+      values.push(topic);
+    }
 
-  try {
-    connection = await getConnection();
-
-    const [results] = await connection.query(
-      "SELECT  title,entradilla,user_id as author ,modifiedAt FROM news WHERE modifiedAt < ?",
-      [modifiedAt]
-    );
+    const [results] = await connection.query(query, values);
 
     return results;
   } catch (error) {
@@ -285,8 +319,7 @@ module.exports = {
   deleteNew,
   getNewById,
   editNew,
-  getNewsByTopic,
-  getNewsBeforeToday,
+  getAllNews,
   createNewPhoto,
   getNewPhotoById,
   getPhotosInNew,
