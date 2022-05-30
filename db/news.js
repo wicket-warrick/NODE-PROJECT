@@ -171,7 +171,7 @@ const getAllNews = async (modifiedAt, topic) => {
       "SELECT title,entradilla,user_id as author,createdAt FROM news ";
     let clause = "WHERE";
     const values = [];
-    if (modfiedAt) {
+    if (modifiedAt) {
       query = `${query} ${clause} modifiedAt < ?`;
       clause = "AND";
       values.push(modifiedAt);
