@@ -168,7 +168,7 @@ const getAllNews = async (modifiedAt, topic) => {
     connection = await getConnection();
 
     let query =
-      "SELECT title,entradilla,user_id as author,createdAt FROM news ";
+      "SELECT id,title,entradilla,user_id as author,createdAt FROM news ";
     let clause = "WHERE";
     const values = [];
     if (modifiedAt) {
