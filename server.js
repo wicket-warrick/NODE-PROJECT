@@ -81,11 +81,7 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(fileUpLoad());
 
-// app.use(
-//   cors({
-//     origin: ["http://mipaginaweb.es", "https://mipaginaweb.es"],
-//   })
-// );
+app.use(cors());
 
 app.post("/user", createUserController);
 
