@@ -1,6 +1,6 @@
 const Joi = require("joi");
 const { generateError } = require("../helpers/generateError");
-const topics = [
+export const topics = [
   "politica",
   "espana",
   "deportes",

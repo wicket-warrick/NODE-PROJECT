@@ -1,5 +1,6 @@
 const { getAllNews } = require("../../db/news");
 const { generateError } = require("../../helpers/generateError");
+const { topics } = require("../../validators/newValidator");
 
 const listNewsController = async (req, res, next) => {
   try {
