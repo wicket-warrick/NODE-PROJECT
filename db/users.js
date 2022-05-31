@@ -76,7 +76,7 @@ const getUserByEmail = async (email) => {
     connection = await getConnection();
 
     const [result] = await connection.query(
-      "SELECT id,password,active FROM users WHERE email=?;",
+      "SELECT id,active,password,email,bio,name FROM users WHERE email=?;",
       [email]
     );
     return result[0];

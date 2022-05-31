@@ -12,6 +12,13 @@ const loginUserController = async (req, res, next) => {
 
     const isLoginValid =
       userData && (await bcrypt.compare(password, userData.password));
+    const userDataPublic = {
+      id: userData.id,
+      active: userData.active,
+      email: userData.email,
+      bio: userData.bio,
+      name: userData.name,
+    };
 
     if (!isLoginValid) {
       throw generateError(
@@ -37,6 +44,7 @@ const loginUserController = async (req, res, next) => {
       status: "ok",
       data: {
         token: token,
+        userDataPublic: userDataPublic,
       },
     });
   } catch (error) {
