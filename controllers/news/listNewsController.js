@@ -19,10 +19,6 @@ const listNewsController = async (req, res, next) => {
 
     const news = await getAllNews(modifiedAt, topic);
 
-    if (!news.length) {
-      throw generateError("Non existen noticias sobre ese tema", 404);
-    }
-
     res.send({
       status: "ok",
       data: news,
