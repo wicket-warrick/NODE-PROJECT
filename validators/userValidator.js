@@ -32,6 +32,7 @@ const newUserSchema = Joi.object().keys({
       )
     ),
   bio: Joi.string()
+    .min(0)
     .max(500)
     .error(
       generateError("a biografia non pode ter mais de 500 caracteres", 400)

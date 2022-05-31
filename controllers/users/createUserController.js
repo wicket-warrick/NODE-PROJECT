@@ -20,11 +20,12 @@ const createUserController = async (req, res, next) => {
 
     const validationUrl = `${process.env.API_HOST}:${process.env.API_PORT}/user/validate/${registrationCode}`;
     try {
-      await sendEmail(
-        email,
-        "Valida a tua conta de usuario",
-        `Para validar fai clic aqui ${validationUrl}`
-      );
+      await sendEmail({
+        email: email,
+        subject: "Valida a tua conta de usuario",
+        content: "Pincha aqui",
+        link: validationUrl,
+      });
     } catch (error) {
       throw generateError("erro de envio de email para activacion");
     }
@@ -33,7 +34,8 @@ const createUserController = async (req, res, next) => {
     res.setHeader("Content-Location", `/users/${userId}`);
     res.send({
       status: "ok",
-      message: "Usuario rexistrado correctamente",
+      message:
+        "Usuario rexistrado correctamente.Por favor, revisa la bandeja de entrada de la cuenta de correo, para validar tu perfil",
     });
   } catch (error) {
     next(error);
