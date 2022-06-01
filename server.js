@@ -74,6 +74,7 @@ const {
   deleteUseAvatarController,
 } = require("./controllers/users/deleteUserAvatarController");
 const listNewsController = require("./controllers/news/listNewsController");
+const newByIdController = require("./controllers/news/newByIdController");
 
 const app = express();
 
@@ -111,6 +112,7 @@ app.delete("/new/:idNew(\\d+)", authUser, deleteNewController);
 
 app.get("/news/votes/", listLastNewsByVotesController);
 
+app.get("/news/:idNew", newByIdController);
 app.get("/news", listNewsController);
 
 app.post("/new/:idNew(\\d+)/photo", authUser, uploadPhotoNewController);
