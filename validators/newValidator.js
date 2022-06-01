@@ -35,8 +35,10 @@ const createAndEditNewSchema = Joi.object().keys({
       )
     ),
   entradilla: Joi.string()
-    .min(0)
+    .min(15)
     .max(100)
+    .optional()
+    .allow("", null)
     .error(
       generateError(
         "A entradilla debe ter un mínimo de 15 caracteres  e maxima 100 ",

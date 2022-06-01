@@ -12,6 +12,7 @@ const createNewController = async (req, res, next) => {
       entradilla,
       topic
     );
+    console.log(req.body);
     res.statusCode = 201;
     res.setHeader("Content-Location", `/new/${idNew}`);
     res.send({

@@ -81,7 +81,7 @@ const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(fileUpLoad());
-
+app.use("/uploads", express.static("./uploads"));
 app.use(cors());
 
 app.post("/user", createUserController);
