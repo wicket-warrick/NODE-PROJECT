@@ -119,48 +119,6 @@ const getNewById = async (id) => {
   }
 };
 
-// const getNewsByTopic = async (topic) => {
-//   let connection;
-
-//   try {
-//     connection = await getConnection();
-
-//     const [results] = await connection.query(
-//       "SELECT title,entradilla,user_id as author,createdAt FROM news WHERE topic = ? ORDER BY modifiedAt DESC;",
-//       [topic]
-//     );
-
-//     return results;
-//   } catch (error) {
-//     throw error;
-//   } finally {
-//     if (connection) {
-//       connection.release();
-//     }
-//   }
-// };
-
-// const getNewsBeforeToday = async (modifiedAt) => {
-//   let connection;
-
-//   try {
-//     connection = await getConnection();
-
-//     const [results] = await connection.query(
-//       "SELECT  title,entradilla,user_id as author ,modifiedAt FROM news WHERE modifiedAt < ?",
-//       [modifiedAt]
-//     );
-
-//     return results;
-//   } catch (error) {
-//     throw error;
-//   } finally {
-//     if (connection) {
-//       connection.release();
-//     }
-//   }
-// };
-
 const getAllNews = async (modifiedAt, topic) => {
   let connection;
 
@@ -168,7 +126,7 @@ const getAllNews = async (modifiedAt, topic) => {
     connection = await getConnection();
 
     let query =
-      "SELECT id,title,entradilla,user_id as author,topic,createdAt FROM news ";
+      "SELECT n.id,n.title,n.entradilla,n.topic,u.name,n.createdAt FROM news n LEFT JOIN users u ON n.user_id=u.id";
     let clause = "WHERE";
     const values = [];
     if (modifiedAt) {

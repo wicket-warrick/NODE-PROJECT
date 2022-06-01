@@ -6,7 +6,6 @@ const listNewsController = async (req, res, next) => {
   try {
     // YYYY-MM-DD
     const { modifiedAt, topic } = req.query;
-    console.log(topic);
 
     if (topic) {
       if (!topics.includes(topic)) {
