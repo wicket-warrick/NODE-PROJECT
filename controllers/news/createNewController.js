@@ -17,6 +17,7 @@ const createNewController = async (req, res, next) => {
     res.send({
       status: "ok",
       message: "Noticia publicada correctamente",
+      idNew: idNew,
     });
   } catch (error) {
     next(error);

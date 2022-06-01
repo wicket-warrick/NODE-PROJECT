@@ -1,3 +1,4 @@
+const { required } = require("joi");
 const Joi = require("joi");
 const { generateError } = require("../helpers/generateError");
 const topics = [
@@ -45,6 +46,7 @@ const createAndEditNewSchema = Joi.object().keys({
     ),
   topic: Joi.string()
     .valid(...topics)
+    .required()
     .error(
       generateError(
         `O campo 'topic' é obrigatorio e debe estar contido dentro de esta lista:${topics}`,
