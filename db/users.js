@@ -81,7 +81,7 @@ const getUserByEmail = async (email) => {
     );
     return result[0];
   } catch (error) {
-    console.error(error);
+    throw error;
   } finally {
     if (connection) {
       connection.release();
