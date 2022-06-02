@@ -105,7 +105,7 @@ const getNewById = async (id) => {
     connection = await getConnection();
 
     const [results] = await connection.query(
-      "SELECT * FROM news WHERE id = ?;",
+      "SELECT n.id,n.title,n.entradilla,n.topic,u.name,n.createdAt, i.url FROM news n LEFT JOIN users u ON n.user_id=u.id LEFT JOIN news_images i ON i.new_id=n.id WHERE n.id = ?;",
       [id]
     );
 
