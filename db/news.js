@@ -126,11 +126,11 @@ const getAllNews = async (modifiedAt, topic) => {
     connection = await getConnection();
 
     let query =
-      "SELECT n.id,n.title,n.entradilla,n.topic,u.name,n.createdAt FROM news n LEFT JOIN users u ON n.user_id=u.id";
+      "SELECT n.id,n.title,n.entradilla,n.topic,u.name,n.createdAt, i.url FROM news n LEFT JOIN users u ON n.user_id=u.id LEFT JOIN news_images i ON i.new_id=n.id";
     let clause = "WHERE";
     const values = [];
     if (modifiedAt) {
-      query = `${query} ${clause} modifiedAt < ?`;
+      query = `${query} ${clause} DATE(modifiedAt) <= ?`;
       clause = "AND";
       values.push(modifiedAt);
     }

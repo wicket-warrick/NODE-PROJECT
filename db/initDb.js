@@ -29,7 +29,7 @@ async function main() {
         registrationCode VARCHAR(100),
         passwordUpdateCode VARCHAR(100),
         bio TEXT,
-        createdAt DATETIME DEFAULT UTC_TIMESTAMP
+        createdAt DATETIME DEFAULT CURRENT_TIMESTAMP
       );
     `);
 
@@ -42,7 +42,7 @@ async function main() {
         entradilla VARCHAR(200),
         topic ENUM('politica','espana','deportes','tecnologia','viajes','salud','economia','entretenimiento','internacional','galicia'),
         createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-        modifiedAt DATETIME DEFAULT UTC_TIMESTAMP ON UPDATE UTC_TIMESTAMP,
+        modifiedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (user_id) REFERENCES users (id)
       );
     `);
