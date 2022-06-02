@@ -23,7 +23,9 @@ const uploadPhotoNewController = async (req, res, next) => {
         );
       }
     } else {
-      throw generateError("Non hai hai ningún documento para subir", 400);
+      res.send({
+        status: "ok",
+      });
     }
 
     res.send({
