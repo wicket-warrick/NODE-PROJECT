@@ -105,7 +105,7 @@ const getNewById = async (id) => {
     connection = await getConnection();
 
     const [results] = await connection.query(
-      "SELECT n.id,n.title,n.entradilla,n.topic, n.description,u.name,n.user_id,n.createdAt, i.url FROM news n LEFT JOIN users u ON n.user_id=u.id LEFT JOIN news_images i ON i.new_id=n.id WHERE n.id = ?;",
+      "SELECT n.id,n.title,n.entradilla,n.topic, n.description,u.name,n.user_id,n.createdAt,i.id as image_id, i.url FROM news n LEFT JOIN users u ON n.user_id=u.id LEFT JOIN news_images i ON i.new_id=n.id WHERE n.id = ?;",
       [id]
     );
 
@@ -126,7 +126,7 @@ const getAllNews = async (modifiedAt, topic) => {
     connection = await getConnection();
 
     let query =
-      "SELECT n.id,n.title,n.entradilla,n.topic,u.name,n.createdAt, i.url FROM news n LEFT JOIN users u ON n.user_id=u.id LEFT JOIN news_images i ON i.new_id=n.id";
+      "SELECT n.id,n.title,n.entradilla,n.topic,u.name,n.createdAt, i.url,i.id as image_id FROM news n LEFT JOIN users u ON n.user_id=u.id LEFT JOIN news_images i ON i.new_id=n.id";
     let clause = "WHERE";
     const values = [];
     if (modifiedAt) {
