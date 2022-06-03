@@ -1,7 +1,7 @@
 const { getUserByEmail, updateUserRecoverCode } = require("../../db/users");
 
 const { generateError } = require("../../helpers/generateError");
-const { sendEmail } = require("../../helpers/sendEmail");
+const { sendEmailRecoveryPassword } = require("../../helpers/sendEmail");
 const {
   recoveryUserPasswordSchema,
 } = require("../../validators/userValidator");
@@ -24,14 +24,12 @@ const recoveryUserPasswordController = async (req, res, next) => {
     const recoverCode = await updateUserRecoverCode(email);
 
     try {
-      await sendEmail(
-        email,
-        "Código de reseteo do teu password",
-        `
-          Para poder recuperar o contrasinal, debes utilizar o seguinte código:
-          ${recoverCode}
-        `
-      );
+      await sendEmailRecoveryPassword({
+        email: email,
+        subject: "Código de reseteo do teu password",
+        content: `Para poder recuperar o contrasinal, debes utilizar o seguinte código:
+          ${recoverCode}`,
+      });
     } catch (error) {
       throw generateError("Erro de envío de email", 500);
     }

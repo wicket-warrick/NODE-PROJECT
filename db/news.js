@@ -160,7 +160,7 @@ const getLastNewsOrderByVotes = async (modifiedAt) => {
     connection = await getConnection();
 
     const [results] = await connection.query(
-      "SELECT n.title,i.url,n.entradilla,n.id,n.description,u.name,COUNT(nv.new_id) AS votes FROM news n LEFT JOIN news_votes nv ON n.id=nv.new_id LEFT JOIN users u ON n.user_id=u.id LEFT JOIN news_images i ON i.new_id=n.id WHERE modifiedAt < ? GROUP BY n.id,i.url ORDER BY COUNT(nv.new_id) DESC ;",
+      "SELECT n.title,i.url,n.entradilla,n.id,n.description,u.name,n.topic,COUNT(nv.new_id) AS votes FROM news n LEFT JOIN news_votes nv ON n.id=nv.new_id LEFT JOIN users u ON n.user_id=u.id LEFT JOIN news_images i ON i.new_id=n.id WHERE DATE(modifiedAt) <= ? GROUP BY n.id,i.url ORDER BY COUNT(nv.new_id) DESC ;",
       [modifiedAt]
     );
 
