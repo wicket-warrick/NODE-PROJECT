@@ -75,6 +75,7 @@ const {
 } = require("./controllers/users/deleteUserAvatarController");
 const listNewsController = require("./controllers/news/listNewsController");
 const newByIdController = require("./controllers/news/newByIdController");
+const getUserByIdController = require("./controllers/users/getUserByIdController");
 
 const app = express();
 
@@ -85,6 +86,8 @@ app.use("/uploads", express.static("./uploads"));
 app.use(cors());
 
 app.post("/user", createUserController);
+
+app.get("/user/:idUser", getUserByIdController);
 
 app.post("/user/login", loginUserController);
 
