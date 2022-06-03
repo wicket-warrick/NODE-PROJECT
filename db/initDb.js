@@ -36,42 +36,42 @@ async function main() {
     await connection.query(`
       CREATE TABLE news (
         id INTEGER PRIMARY KEY AUTO_INCREMENT,
-        user_id INTEGER NOT NULL,
+        user_id INTEGER,
         title VARCHAR(50) NOT NULL,
         description TEXT NOT NULL,
         entradilla VARCHAR(200),
         topic ENUM('politica','espana','deportes','tecnologia','viajes','salud','economia','entretenimiento','internacional','galicia'),
         createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
         modifiedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        FOREIGN KEY (user_id) REFERENCES users (id)
+        FOREIGN KEY (user_id) REFERENCES users (id)  ON DELETE SET NULL
       );
     `);
 
     await connection.query(`
       CREATE TABLE news_images (
         id INTEGER PRIMARY KEY AUTO_INCREMENT,
-        new_id INTEGER NOT NULL,
+        new_id INTEGER ,
         url VARCHAR(100),
-        FOREIGN KEY (new_id) REFERENCES news (id)
+        FOREIGN KEY (new_id) REFERENCES news (id)  ON DELETE SET NULL
       )
     `);
 
     await connection.query(`
       CREATE TABLE users_images (
         id INTEGER PRIMARY KEY AUTO_INCREMENT,
-        user_id INTEGER NOT NULL,
+        user_id INTEGER ,
         url VARCHAR(100),
-        FOREIGN KEY (user_id) REFERENCES users (id)
+        FOREIGN KEY (user_id) REFERENCES users (id)  ON DELETE SET NULL
       )
     `);
 
     await connection.query(`
       CREATE TABLE news_votes (
-        user_id INTEGER NOT NULL,
-        new_id INTEGER NOT NULL,
-        PRIMARY KEY (user_id, new_id),
-        FOREIGN KEY (new_id) REFERENCES news (id),
-        FOREIGN KEY (user_id) REFERENCES users (id)
+        id INTEGER PRIMARY KEY AUTO_INCREMENT,
+        user_id INTEGER,
+        new_id INTEGER,
+        FOREIGN KEY (new_id) REFERENCES news (id) ON DELETE SET NULL,
+        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE SET NULL
       )
     `);
   } catch (error) {
