@@ -31,7 +31,10 @@ const uploadAvatarUserController = async (req, res, next) => {
 
     res.send({
       status: "ok",
-      message: "O avatar subiuse correctamente",
+      data: {
+        message: "O avatar subiuse correctamente",
+        url: processedAvatar,
+      },
     });
   } catch (error) {
     next(error);
