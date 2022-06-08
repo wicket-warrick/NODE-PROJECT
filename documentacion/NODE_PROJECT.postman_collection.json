@@ -1,0 +1,625 @@
+{
+	"info": {
+		"_postman_id": "6d5b7782-9af5-4404-aa3e-6d65faeadd00",
+		"name": "PROXECTO NODE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "USERS",
+			"item": [
+				{
+					"name": "CREATE USER",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"xxxxxxxxx\",\n    \"email\":\"xxxxxxxxx@mail.com\",\n    \"password\":\"xxxxxxxxxxx\",\n    \"bio\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/user",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"user"
+							]
+						},
+						"description": "Creación de usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "VALIDATION USER",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {}
+						},
+						"url": {
+							"raw": "{{basePath}}/user/validate/",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"user",
+								"validate",
+								""
+							]
+						},
+						"description": "Validación de usuario, a través de código de activación en URL.\nO código de activación , recibese na conta email coa que se fixo o rexistro"
+					},
+					"response": []
+				},
+				{
+					"name": "LOGIN USER",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"xxxxxxxx@mail.com\",\n    \"password\":\"xxxxxxxxx\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/user/login",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPLOAD AVATAR USER BY idUser",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{basePath}}/user/3/avatar",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"user",
+								"3",
+								"avatar"
+							]
+						},
+						"description": "Subida de arquivo de imaxe, para avatar de usuario.\nNecesaria autenticación."
+					},
+					"response": []
+				},
+				{
+					"name": "RECOVERY USER PASSWORD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"xxxxxxxxxxxxxxxxx@mail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/user/recoverypassword",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"user",
+								"recoverypassword"
+							]
+						},
+						"description": "Recuperación de contrasinal a través de código de recuperación.1º pASO. Envío ó usuario de código para recuperación."
+					},
+					"response": []
+				},
+				{
+					"name": "RESET USER PASSWORD",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"recoverCode\":\"xxxxxxxxxxxxxxxxx\",\n    \"newPassword\":\"xxxxxxxxxx\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/user/resetpassword",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"user",
+								"resetpassword"
+							]
+						},
+						"description": "Recuperación de contrasinal a través de código de recuperación.2º pASO.Comprobación de codigo de recuperación e cambio de password."
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT USER BY idUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"xxxxxxxxxxxxxx\",\n    \"email\":\"xxxxxxxxxxxxx@mail.com\",\n    \"bio\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/user/1",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						},
+						"description": "Edicion de usuario.Necesita autenticación."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE USER BY idUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{basePath}}/user/1",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"user",
+								"1"
+							]
+						},
+						"description": "Borrado de usuario.Necesita autenticación."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE USER AVATAR BY idUser/idAvatar",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{basePath}}/user/1/avatar/1",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"avatar",
+								"1"
+							]
+						},
+						"description": "Borrado de avatar.Necesita autenticación."
+					},
+					"response": []
+				},
+				{
+					"name": "CHANGE PASSWORD BY idUser",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"currentPassword\":\"xxxxxxxxxxxxx\",\n    \"newPassword\":\"xxxxxxxxxx\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/user/1/password",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"user",
+								"1",
+								"password"
+							]
+						},
+						"description": "Cambio de contrasinal.Necesita autenticación."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "NEWS",
+			"item": [
+				{
+					"name": "CREATE NEW",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"Prueba de noticia x\",\n    \"description\":\"Texto da noticia.\",\n    \"entradilla\":\"Subtitulo.Aumenta información del titular\",\n    \"topic\":\"galicia\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/new",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"new"
+							]
+						},
+						"description": "Creación de noticia.Necesaria autenticación"
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE NEW BY idNew",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{basePath}}/new/2",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"new",
+								"2"
+							]
+						},
+						"description": "Borrado de noticia. Necesita autenticación."
+					},
+					"response": []
+				},
+				{
+					"name": "EDIT NEW BY idNew",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\":\"\",\n    \"description\":\"\",\n    \"entradilla\":\"\",\n    \"topic\":\"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{basePath}}/new/3",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"new",
+								"3"
+							]
+						},
+						"description": "Edición de noticia. Necesita autenticación"
+					},
+					"response": []
+				},
+				{
+					"name": "NEWS BY topic",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basePath}}/news/topic/",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"news",
+								"topic",
+								""
+							],
+							"query": [
+								{
+									"key": "topic",
+									"value": "galicia",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Busqueda de noticias por temática"
+					},
+					"response": []
+				},
+				{
+					"name": "NEWS BY modifiedAt",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basePath}}/news/data/",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"news",
+								"data",
+								""
+							],
+							"query": [
+								{
+									"key": "modifiedAt",
+									"value": "2022-04-30",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Busqueda de noticias, anteriores á data de moficiación indicada, ordeadas da máis actual á máis antiga"
+					},
+					"response": []
+				},
+				{
+					"name": "UPLOAD PHOTO NEW BY idNew",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{basePath}}/new/1/photo",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"new",
+								"1",
+								"photo"
+							]
+						},
+						"description": "Subir unha foto a unha noticia.Necesita autenticación"
+					},
+					"response": []
+				},
+				{
+					"name": "LIST OF PHOTOS BY idNew",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{basePath}}/new/1/photo",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"new",
+								"1",
+								"photo"
+							]
+						},
+						"description": "Listado de fotos contidas nunha noticia.Necesita auntenticación."
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE PHOTO BY idNew & idPhoto",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{basePath}}/new/1/photos/1",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"new",
+								"1",
+								"photos",
+								"1"
+							]
+						},
+						"description": "Borrado de unha imaxe dunha noticia en concreto. Necesita autenticación."
+					},
+					"response": []
+				},
+				{
+					"name": "VOTE NEW BY idNew",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{basePath}}/new/1/vote",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"new",
+								"1",
+								"vote"
+							]
+						},
+						"description": "Votar noticia.Necesita autenticación."
+					},
+					"response": []
+				},
+				{
+					"name": "LIST NEWS ORDERED BY votes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{basePath}}/news/votes",
+							"host": [
+								"{{basePath}}"
+							],
+							"path": [
+								"news",
+								"votes"
+							],
+							"query": [
+								{
+									"key": "modifiedAt",
+									"value": "2022-12-12",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Listado de noticias ordeadas por número de votos"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
