@@ -1,5 +1,11 @@
 ### Entities
 
+| User  |     Email      | Password |
+| :---: | :------------: | :------: |
+| user1 | user1@mail.com | 1234asdf |
+| user2 | user2@mail.com | 1234asdf |
+| user3 | user3@mail.com | 1234asdf |
+
 - User:
   - id
   - email
