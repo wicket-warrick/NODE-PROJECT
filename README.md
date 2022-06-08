@@ -139,6 +139,8 @@ B. DOWNLOAD the repo.
 
 ### Entities
 
+The information related to the entities can be found in the following <a href='https://github.com/wicket-warrick/PROXECTO2_NODE/blob/main/documentacion/entities.md'>document</a>.
+
 ### User Endpoints
 
 - **POST /user** User registration.
