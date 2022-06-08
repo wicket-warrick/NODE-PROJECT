@@ -1,5 +1,11 @@
 ### Entities
 
+  NAME	    PASSWORD	      EMAIL
+  user1	    1234asdf	  user1@mail.com
+  user2	    1234asdf	  user2@mail.com
+  user3	    1234asdf	  user2@mail.com
+
+
 - User:
   - id
   - email
