@@ -8,7 +8,7 @@ const getNewsByTopicController = async (req, res, next) => {
 
     if (!topics.includes(topic)) {
       throw generateError(
-        `O parámetro topic debe  ser un dos seguintes:${topics}`,
+        `El campo 'Topic' es obligatorio. Las opciones disponibles son:${topics}`,
         400
       );
     }
@@ -16,7 +16,7 @@ const getNewsByTopicController = async (req, res, next) => {
     const newsByTopic = await getNewsByTopic(topic);
 
     if (!newsByTopic) {
-      throw generateError("Non existen noticias sobre ese tema", 404);
+      throw generateError(`No existen resultados para el topic ${topic}`, 404);
     }
 
     res.send({

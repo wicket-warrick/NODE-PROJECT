@@ -13,7 +13,7 @@ const resetUserPasswordController = async (req, res, next) => {
 
     if (!user) {
       throw generateError(
-        "Non hai ningún usuari con este código de recuperación",
+        "No hay ningún usuario con ese código de recuperación",
         404
       );
     }
@@ -24,7 +24,7 @@ const resetUserPasswordController = async (req, res, next) => {
 
     res.send({
       status: "ok",
-      message: "Password actualizada",
+      message: "Password actualizado correctamente",
     });
   } catch (error) {
     next(error);

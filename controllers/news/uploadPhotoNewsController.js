@@ -7,10 +7,13 @@ const uploadPhotoNewController = async (req, res, next) => {
     const { idNew } = req.params;
     const New = await getNewById(idNew);
     if (!New) {
-      throw generateError("Non exsite ninguna noticia con esa ID", 404);
+      throw generateError(`No existe ninguna noticia con id:${idNew}`, 404);
     }
     if (New.user_id != req.auth.id) {
-      throw generateError("Non tes permisos para editar esta noticia", 403);
+      throw generateError(
+        "No tiene permisos para editar la noticia.Solo es posible editar noticias por el autor de las mismas",
+        403
+      );
     }
     if (req.files && req.files.photo) {
       try {
@@ -18,7 +21,7 @@ const uploadPhotoNewController = async (req, res, next) => {
         await createNewPhoto(idNew, processedPhoto);
       } catch (err) {
         throw generateError(
-          "Houbo un problema gardando a Photo, inténtalo de novo",
+          "Problema guardando la imagen.Por favor, inténtelo de nuevo más tarde.",
           500
         );
       }
@@ -30,7 +33,7 @@ const uploadPhotoNewController = async (req, res, next) => {
 
     res.send({
       status: "ok",
-      message: "A imaxe subiuse correctamente",
+      message: "Imagen subida con exito.",
     });
   } catch (error) {
     next(error);

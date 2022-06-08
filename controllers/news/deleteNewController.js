@@ -6,22 +6,25 @@ const deleteNewController = async (req, res, next) => {
     const { idNew } = req.params;
 
     if (isNaN(parseInt(idNew))) {
-      throw generateError("O parámetro ID da noticia debe ser un número", 400);
+      throw generateError("El parámetro 'id' debe ser un número.", 400);
     }
     const newToDelete = await getNewById(idNew);
     if (!newToDelete) {
-      throw generateError("Non existe unha noticia con esa ID", 404);
+      throw generateError(`No existe ninguna noticia con id:${idNew}`, 404);
     }
 
     if (newToDelete.user_id != req.auth.id) {
-      throw generateError("Non tes os permisos para editar esta notica", 403);
+      throw generateError(
+        "No tiene permisos para borrar la noticia.Solo es posible borrar noticias por el autor de las mismas",
+        403
+      );
     }
 
     await deleteNew(idNew);
 
     res.send({
       status: "ok",
-      message: "Noticia eliminada.",
+      message: "Noticia eliminada con exito.",
     });
   } catch (error) {
     next(error);

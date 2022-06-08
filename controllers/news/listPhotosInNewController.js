@@ -8,7 +8,10 @@ const listPhotosInNewController = async (req, res, next) => {
     const listOfPhotos = await getPhotosInNew(idNew);
 
     if (!listOfPhotos[0].length) {
-      throw generateError("Non existen fotos na noticia", 404);
+      throw generateError(
+        `La noticia con id:${idNew}, no contiene imágenes`,
+        404
+      );
     }
     res.send({
       status: "ok",

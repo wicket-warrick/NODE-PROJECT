@@ -14,7 +14,10 @@ const createUser = async (name, email, password, bio = "") => {
     );
 
     if (existingUser.length > 0) {
-      throw generateError("xa existe un usuario con ese email", 409);
+      throw generateError(
+        "Email no válido o usuario ya registrado. Por favor,seleccione otro email.",
+        409
+      );
     }
 
     const registrationCode = uuid.v4();
@@ -162,7 +165,7 @@ const editUser = async (id, name, bio, email) => {
     );
 
     if (userToEdit.length === 0) {
-      throw generateError(`Non existe un usuario con id: ${id}.`, 404);
+      throw generateError(`No existe ningún usuario con id: ${id}.`, 404);
     }
 
     if (!name) {
@@ -256,7 +259,7 @@ const deleteUser = async (id) => {
     );
 
     if (selectedNew.length === 0) {
-      throw generateError(`O usuario con ID: ${id} non existe.`, 404);
+      throw generateError(`No existe ningún usuario con id: ${id}.`, 404);
     }
 
     await connection.query("DELETE FROM users WHERE id = ?;", [id]);

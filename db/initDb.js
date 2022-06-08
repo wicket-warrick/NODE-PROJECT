@@ -77,7 +77,7 @@ async function main() {
   } catch (error) {
     console.error(error);
   } finally {
-    console.log("Traballo feito, liberando conexión");
+    console.log("Base de datos creada y actualizada.Conexión liberada");
     if (connection) connection.release();
     process.exit();
   }

@@ -6,22 +6,22 @@ const deleteUserController = async (req, res, next) => {
     const { idUser } = req.params;
 
     if (isNaN(parseInt(idUser))) {
-      throw generateError("O parámetro ID do usuario debe ser un número", 400);
+      throw generateError("El parámetro 'id' debe ser un número.", 400);
     }
     const userToDelete = await getUserById(idUser);
     if (!userToDelete) {
-      throw generateError("Non existe unha noticia con esa ID", 404);
+      throw generateError(`No existe ningún usuario con id:${idUser}`, 404);
     }
 
     if (userToDelete.id != req.auth.id) {
-      throw generateError("Non tes os permisos para borrar este usuario", 403);
+      throw generateError("No tiene permisos para editar este usuario.", 403);
     }
 
     await deleteUser(idUser);
 
     res.send({
       status: "ok",
-      message: "Usuario eliminada.",
+      message: "Usuario eliminado correctamente.",
     });
   } catch (error) {
     next(error);

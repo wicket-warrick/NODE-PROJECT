@@ -15,10 +15,7 @@ const recoveryUserPasswordController = async (req, res, next) => {
     const user = await getUserByEmail(email);
 
     if (!user) {
-      throw generateError(
-        `Non hai ningún usuario con email ${email} na base de datos`,
-        404
-      );
+      throw generateError(`No hay ningún usuario con email ${email}`, 404);
     }
 
     const recoverCode = await updateUserRecoverCode(email);
@@ -26,17 +23,18 @@ const recoveryUserPasswordController = async (req, res, next) => {
     try {
       await sendEmailRecoveryPassword({
         email: email,
-        subject: "Código de reseteo do teu password",
-        content: `Para poder recuperar o contrasinal, debes utilizar o seguinte código:
+        subject: "Código de reseteo del password",
+        content: `Para poder recuperar el password, debes utilizar el siguinte código:
           ${recoverCode}`,
       });
     } catch (error) {
-      throw generateError("Erro de envío de email", 500);
+      throw generateError("Error de envío de email", 500);
     }
 
     res.send({
       status: "ok",
-      message: "Enviouse un email á conta de coarreo asociada có usuario ",
+      message:
+        "Se ha enviado un email , a la cuenta asociada con el usuario. Por favor revise su bandeja de entrada, para finalizar el proceso. ",
     });
   } catch (error) {
     next(error);

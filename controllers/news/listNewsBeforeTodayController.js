@@ -7,7 +7,7 @@ const listNewsBeforeTodayController = async (req, res, next) => {
 
     const news = await getNewsBeforeToday(modifiedAt);
     if (!news.length) {
-      throw generateError("Non hai resultados", 404);
+      throw generateError("No hay resultados.", 404);
     }
 
     res.send({

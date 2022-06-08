@@ -140,7 +140,7 @@ app.use((req, res) => {
   res.statusCode = 404;
   res.send({
     status: "error",
-    message: "not found",
+    message: "Not found",
   });
 });
 
