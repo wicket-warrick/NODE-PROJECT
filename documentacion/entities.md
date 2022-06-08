@@ -1,10 +1,18 @@
 ### Entities
 
+<<<<<<< HEAD
 | User  |     Email      | Password |
 | :---: | :------------: | :------: |
 | user1 | user1@mail.com | 1234asdf |
 | user2 | user2@mail.com | 1234asdf |
 | user3 | user3@mail.com | 1234asdf |
+=======
+  NAME	    PASSWORD	      EMAIL
+  user1	    1234asdf	  user1@mail.com
+  user2	    1234asdf	  user2@mail.com
+  user3	    1234asdf	  user2@mail.com
+
+>>>>>>> c655b16612571cdd579bfd7546e266d12e13f280
 
 - User:
   - id
