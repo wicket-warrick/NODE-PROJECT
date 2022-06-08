@@ -259,7 +259,7 @@ const voteNew = async (userId, newId) => {
   } catch (error) {
     if (error.errno === 1062) {
       throw generateError(
-        "Xa votaches esta noticia, so podes votar unha vez cada noticia",
+        "Ya has votado esta noticia.Solo se puede votar una vez cada noticia.",
         400
       );
     } else {

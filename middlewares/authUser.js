@@ -9,7 +9,7 @@ const authUser = (req, res, next) => {
     const [bearer, token] = authorization.split(" ");
     if (bearer !== "Bearer" || !token) {
       throw generateError(
-        "O formato do header 'authorization' é 'Bearer TOKEN'",
+        "El formato del header 'authorization' es 'Bearer TOKEN'",
         401
       );
     }
@@ -18,7 +18,7 @@ const authUser = (req, res, next) => {
     try {
       tokenInfo = jwt.verify(token, process.env.API_SECRET);
     } catch (e) {
-      throw generateError("O token non é valido", 401);
+      throw generateError("El token no es valido", 401);
     }
     req.auth = tokenInfo;
     next();

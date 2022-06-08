@@ -6,13 +6,13 @@ const newByIdController = async (req, res, next) => {
     const { idNew } = req.params;
 
     if (isNaN(parseInt(idNew))) {
-      throw generateError("O parámetro ID debe ser un número", 400);
+      throw generateError("El parámetro 'id' debe ser un número.", 400);
     }
 
     const news = await getNewById(idNew);
 
     if (!news) {
-      throw generateError(`No hay noticia con ese ID`, 400);
+      throw generateError(`No existe ninguna noticia con id:${idNew}`, 400);
     }
     res.send({
       status: "ok",

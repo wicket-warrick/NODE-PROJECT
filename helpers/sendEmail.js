@@ -11,7 +11,7 @@ const sendEmail = async ({ email, subject, content, link }) => {
     html: `<div>
     <h1>${subject}</h1>
     <p>${content}</p>
-    <a href='http://${link}'>Pincha aqui</a>
+    <a href='http://${link}'>Clic aqui</a>
     </div>
     `,
   };

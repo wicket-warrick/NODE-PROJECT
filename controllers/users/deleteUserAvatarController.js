@@ -16,17 +16,17 @@ const deleteUseAvatarController = async (req, res, next) => {
     const user = await getUserById(idUser);
 
     if (!user) {
-      throw generateError("Non existe unha usuario con ese ID", 404);
+      throw generateError(`No existe ningún usuario con id:${idUser}`, 404);
     }
 
     if (user.id != req.auth.id) {
-      throw generateError("Non tes os permisos para editar este usuario", 403);
+      throw generateError("No tiene permisos para editar este usuario.", 403);
     }
 
     const avatar = await getUserAvatarById(idAvatar);
 
     if (!avatar) {
-      throw generateError("Non existe un avatar con esa ID", 404);
+      throw generateError(`No existe ningún  Avatar con id:${idAvatar}`, 404);
     }
 
     await deleteAvatarById(idAvatar);
@@ -35,7 +35,7 @@ const deleteUseAvatarController = async (req, res, next) => {
 
     res.send({
       status: "ok",
-      message: "Avatar borrado",
+      message: "Avatar borrado correctamente.",
     });
   } catch (error) {
     next(error);

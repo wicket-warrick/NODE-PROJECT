@@ -9,14 +9,14 @@ const validateUserController = async (req, res, next) => {
 
     if (!user) {
       throw generateError(
-        "Non existe ningún usuario pendiente de activacion con ese código",
+        "No existe ningún usuario pendiente de activacion con ese código.",
         404
       );
     }
     await activateUser(user.id);
     res.send({
       status: "ok",
-      message: "Rexistro finalizado.Conta activada",
+      message: "Registro finalizado.Cuenta activada.",
     });
   } catch (error) {
     next(error);

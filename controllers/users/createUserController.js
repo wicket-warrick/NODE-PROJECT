@@ -22,12 +22,15 @@ const createUserController = async (req, res, next) => {
     try {
       await sendEmail({
         email: email,
-        subject: "Valida a tua conta de usuario",
-        content: "Pincha aqui",
+        subject: "Validación cuenta de usuario.",
+        content:
+          "Para finalizar el proceso de registra, por favor, accede al siguiente link:",
         link: validationUrl,
       });
     } catch (error) {
-      throw generateError("erro de envio de email para activacion");
+      throw generateError(
+        "Error de envio de email para la activacion de la cuenta"
+      );
     }
 
     res.statusCode = 201;
@@ -35,7 +38,7 @@ const createUserController = async (req, res, next) => {
     res.send({
       status: "ok",
       message:
-        "Usuario rexistrado correctamente.Por favor, revisa la bandeja de entrada de la cuenta de correo, para validar tu perfil",
+        "Usuario registrado correctamente.Por favor, revisa la bandeja de entrada de la cuenta de correo, para validar su perfil",
     });
   } catch (error) {
     next(error);

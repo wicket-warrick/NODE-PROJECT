@@ -7,7 +7,7 @@ const voteNewController = async (req, res, next) => {
     res.statusCode = 201;
     res.send({
       status: "ok",
-      message: "Voto correctamente contabilizado",
+      message: "Voto correcto.",
     });
   } catch (error) {
     next(error);

@@ -15,14 +15,14 @@ const loginUserController = async (req, res, next) => {
 
     if (!isLoginValid) {
       throw generateError(
-        `Non exsite ningún usuario rexistrado con ese email o contrasinal`,
+        `No exsite ningún usuario registrado con ese email o password`,
         401
       );
     }
 
     if (!userData.active) {
       throw generateError(
-        "O usuario non está activado, revisa o teu email",
+        "El usuario no está activado, revise su cuenta de email y finalice el proceso de registro.",
         201
       );
     }

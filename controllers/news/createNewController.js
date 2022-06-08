@@ -17,7 +17,7 @@ const createNewController = async (req, res, next) => {
     res.setHeader("Content-Location", `/new/${idNew}`);
     res.send({
       status: "ok",
-      message: "Noticia publicada correctamente",
+      message: "Noticia publicada correctamente.",
       idNew: idNew,
     });
   } catch (error) {

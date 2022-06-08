@@ -7,7 +7,7 @@ const newUserSchema = Joi.object().keys({
     .required()
     .error(
       generateError(
-        "debe introducir un email válido e unha password de 8 dixitos como min",
+        "El campo 'email' es obligatorio.Por favor, introduzca un email válido.",
         400
       )
     ),
@@ -18,7 +18,7 @@ const newUserSchema = Joi.object().keys({
     .required()
     .error(
       generateError(
-        "o campo 'name' é obrigatorio e debe ter 3 caracateres como min e un maximo de 15",
+        "El campo 'Nombre de usuario' es obligatorio y debe contener 3 caracteres com mínimo y 15 como máximo.",
         400
       )
     ),
@@ -27,7 +27,7 @@ const newUserSchema = Joi.object().keys({
     .required()
     .error(
       generateError(
-        "debe introducir un email válido e unha password de 8 dixitos como min",
+        "El campo 'password' es obligatorio.Por favor, introduzca un password de 8 caracteres como mínimo.",
         400
       )
     ),
@@ -35,20 +35,25 @@ const newUserSchema = Joi.object().keys({
     .min(0)
     .max(500)
     .error(
-      generateError("a biografia non pode ter mais de 500 caracteres", 400)
+      generateError(
+        "El campo 'Biografía' no puede tener más de 500 caracteres.",
+        400
+      )
     ),
 });
 const loginUserSchema = Joi.object().keys({
   email: Joi.string()
     .email()
     .required()
-    .error(generateError("debe introducir un email válido", 400)),
+    .error(
+      generateError("Por favor introduzca un password e email válido.", 400)
+    ),
 
   password: Joi.string()
     .min(8)
     .required()
     .error(
-      generateError("debe introducir password de 8 dixitos como min", 400)
+      generateError("Por favor introduzca un password e email válido.", 400)
     ),
 });
 const editUserSchema = Joi.object().keys({
@@ -58,19 +63,27 @@ const editUserSchema = Joi.object().keys({
     .required()
     .error(
       generateError(
-        "o campo 'name' é obrigatorio e debe ter 3 caracateres como min e un maximo de 15",
+        "El campo 'Nombre de usuario' es obligatorio y debe contener 3 caracteres com mínimo y 15 como máximo.",
         400
       )
     ),
   email: Joi.string()
     .email()
     .required()
-    .error(generateError("debe introducir un email válido", 400)),
+    .error(
+      generateError(
+        "El campo 'email' es obligatorio.Por favor, introduzca un email válido.",
+        400
+      )
+    ),
 
   bio: Joi.string()
     .max(500)
     .error(
-      generateError("a biografia non pode ter mais de 500 caracteres", 400)
+      generateError(
+        "El campo 'Biografía' no puede tener más de 500 caracteres.",
+        400
+      )
     ),
 });
 
@@ -79,13 +92,19 @@ const changeUserPasswordSchema = Joi.object().keys({
     .min(8)
     .required()
     .error(
-      generateError("debe introducir password de 8 dixitos como min", 400)
+      generateError(
+        "El campo 'password' es obligatorio.Por favor, introduzca un password de 8 caracteres como mínimo.",
+        400
+      )
     ),
   newPassword: Joi.string()
     .min(8)
     .required()
     .error(
-      generateError("debe introducir password de 8 dixitos como min", 400)
+      generateError(
+        "El campo 'password' es obligatorio.Por favor, introduzca un password de 8 caracteres como mínimo.",
+        400
+      )
     ),
 });
 
@@ -94,7 +113,10 @@ const recoveryUserPasswordSchema = Joi.object().keys({
     .email()
     .required()
     .error(
-      generateError("O campo email, debe conter un campo email válido", 400)
+      generateError(
+        "El campo 'email' es obligatorio.Por favor, introduzca un email válido.",
+        400
+      )
     ),
 });
 
@@ -104,7 +126,7 @@ const resetUserPasswordSchema = Joi.object().keys({
     .required()
     .error(
       generateError(
-        "O campo recoverCode é obrigatorio e debe contar con 40 caracteres",
+        "El campo 'recover code' es obligatorio.Por favor, consulte la bandeja de entrada, de la cuenta de email vinculado a su perfil.",
         400
       )
     ),
@@ -113,7 +135,7 @@ const resetUserPasswordSchema = Joi.object().keys({
     .required()
     .error(
       generateError(
-        "O campo newPassword é obrigatorio e debe ter unha lonxitude minima de 8 caracteres",
+        "El campo 'new  password' es obligatorio.Por favor, introduzca un password de 8 caracteres como mínimo.",
         400
       )
     ),

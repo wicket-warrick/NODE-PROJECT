@@ -12,16 +12,16 @@ const changeUserPasswordController = async (req, res, next) => {
     const user = await getUserById(idUser);
 
     if (!user) {
-      throw generateError("Non existe un usuario con ese id", 404);
+      throw generateError(`No existe ningun usuario con id:${idUser}`, 404);
     }
     if (user.id != req.auth.id) {
-      throw generateError("Non tes os permisos para editar este usuario", 403);
+      throw generateError("No tiene permisos para editar este usuario.", 403);
     }
     const isPasswordCorrect =
       user && (await bcrypt.compare(currentPassword, user.password));
 
     if (!isPasswordCorrect) {
-      throw generateError("A password non coincide coa password actual", 404);
+      throw generateError("Password incorrecto. ", 404);
     }
 
     const encryptedPassword = await bcrypt.hash(newPassword, 10);
@@ -30,7 +30,7 @@ const changeUserPasswordController = async (req, res, next) => {
 
     res.send({
       status: "ok",
-      message: "Password actualizada",
+      message: "Password actualizado",
     });
   } catch (error) {
     next(error);

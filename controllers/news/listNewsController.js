@@ -10,7 +10,7 @@ const listNewsController = async (req, res, next) => {
     if (topic) {
       if (!topics.includes(topic)) {
         throw generateError(
-          `O parámetro topic debe  ser un dos seguintes:${topics}`,
+          `El campo 'Topic' es obligatorio. Las opciones disponibles son:${topics}`,
           400
         );
       }
