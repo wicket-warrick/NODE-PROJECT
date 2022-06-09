@@ -16,32 +16,32 @@ const topics = [
 const createAndEditNewSchema = Joi.object().keys({
   title: Joi.string()
     .min(1)
-    .max(50)
+    .max(100)
     .required()
     .error(
       generateError(
-        "El campo 'Título' es obligatorio y tiene una longitud máxima de 50 caracteres. ",
+        "El campo 'Título' es obligatorio y tiene una longitud máxima de 100 caracteres. ",
         400
       )
     ),
   description: Joi.string()
     .min(50)
-    .max(800)
+    .max(2000)
     .required()
     .error(
       generateError(
-        "El campo 'Noticia' es obligatorio y tiene una longitud mínima de 50 caracteres y máxima de 800.",
+        "El campo 'Noticia' es obligatorio y tiene una longitud mínima de 50 caracteres y máxima de 2000.",
         400
       )
     ),
   entradilla: Joi.string()
     .min(15)
-    .max(100)
+    .max(200)
     .optional()
     .allow("", null)
     .error(
       generateError(
-        "El campo 'Entradilla' es obligatorio y tiene una longitud mínima de 15 caracteres y máxima de 100.",
+        "El campo 'Entradilla' es obligatorio y tiene una longitud mínima de 15 caracteres y máxima de 200.",
         400
       )
     ),
