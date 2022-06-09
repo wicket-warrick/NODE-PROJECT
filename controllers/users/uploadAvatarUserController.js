@@ -5,6 +5,7 @@ const { processAndSaveAvatar } = require("../../helpers/processUserAvatar.js");
 
 const uploadAvatarUserController = async (req, res, next) => {
   try {
+    let processedAvatar;
     const { idUser } = req.params;
     const user = await getUserById(idUser);
     if (!user) {
@@ -15,9 +16,7 @@ const uploadAvatarUserController = async (req, res, next) => {
     }
     if (req.files && req.files.photo) {
       try {
-        const processedAvatar = await processAndSaveAvatar(
-          req.files.photo.data
-        );
+        processedAvatar = await processAndSaveAvatar(req.files.photo.data);
         await createUserAvatar(idUser, processedAvatar);
       } catch (err) {
         throw generateError(
