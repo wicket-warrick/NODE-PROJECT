@@ -67,11 +67,11 @@ async function main() {
 
     await connection.query(`
       CREATE TABLE news_votes (
-        id INTEGER PRIMARY KEY AUTO_INCREMENT,
         user_id INTEGER,
         new_id INTEGER,
-        FOREIGN KEY (new_id) REFERENCES news (id) ON DELETE SET NULL,
-        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE SET NULL
+        PRIMARY KEY(new_id,user_id) ,
+        FOREIGN KEY (new_id) REFERENCES news (id) ON DELETE CASCADE,
+        FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
       )
     `);
   } catch (error) {
