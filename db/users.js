@@ -62,7 +62,7 @@ const getUserById = async (id) => {
   try {
     connection = await getConnection();
     const [results] = await connection.query(
-      "SELECT u.email,u.id,u.name,u.createdAt,u.bio,ui.url,ui.id AS idAvatar FROM users u LEFT JOIN users_images ui ON u.id=ui.user_id WHERE u.id=?;",
+      "SELECT u.email,u.id,u.name,u.createdAt,u.bio,u.password,ui.url,ui.id AS idAvatar FROM users u LEFT JOIN users_images ui ON u.id=ui.user_id WHERE u.id=?;",
       [id]
     );
     return results[0];
