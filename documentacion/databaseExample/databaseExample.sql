@@ -131,7 +131,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1@mail.com','$2b$10$CtKu1dzHHb9jdJMCez8dz.sCyfzLmcmmbnKhEc.5uH1QeQJ4vh89C','user1',1,NULL,NULL,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam provident quaerat tempore eligendi, deserunt, sequi perspiciatis dolore quasi dolorum explicabo ad dolorem fuga, in aperiam. Fugiat reiciendis velit ipsa maiores.','2022-06-06 19:31:53'),(2,'user2@mail.com','$2b$10$Ux/7LR208cFQd54xGt9FfuCwQ13mTJbZ8fmUjFo6t8DTt.c0L.CUm','user2',1,NULL,NULL,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam provident quaerat tempore eligendi, deserunt, sequi perspiciatis dolore quasi dolorum explicabo ad dolorem fuga, in aperiam. Fugiat reiciendis velit ipsa maiores.','2022-06-06 19:34:05'),(3,'user3@mail.com','$2b$10$VfiJCsXYprL4Im5yug6vneIkzOqMxfBVhJomZMkKl3PuVf.I0rhba','user3',1,NULL,NULL,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam provident quaerat tempore eligendi, deserunt, sequi perspiciatis dolore quasi dolorum explicabo ad dolorem fuga, in aperiam. Fugiat reiciendis velit ipsa maiores.','2022-06-06 19:35:00');
+INSERT INTO `users` VALUES (1,'user1@mail.com','$2b$10$.E6P19u1wVkmhL/uPZLhAOZAe3QAFDA4dTHyE8k.vG6UfN.Jy7lSK','user1',1,NULL,NULL,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id mauris interdum, feugiat ante eget, ornare est. Nunc id nisi ullamcorper, euismod augue et, dignissim neque. Quisque nibh nibh, vulputate quis lacus in, rutrum facilisis nulla. Maecenas non erat nec nisi imperdiet consequat. Nam suscipit, nibh at maximus auctor, ex metus pellentesque tortor, eget lacinia orci ipsum sed sem. Duis faucibus massa nec erat ultrices, vel dapibus mauris blandit. Aliquam placerat faucibus ante dolor.','2022-06-13 13:38:12'),(2,'user2@mail.com','$2b$10$P1v8R7/ouSQ2gK1/wwD4ZeeLMeVtGNb3E9BzozX20pyKtNjbQngTq','user2',1,NULL,NULL,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id mauris interdum, feugiat ante eget, ornare est. Nunc id nisi ullamcorper, euismod augue et, dignissim neque. Quisque nibh nibh, vulputate quis lacus in, rutrum facilisis nulla. Maecenas non erat nec nisi imperdiet consequat. Nam suscipit, nibh at maximus auctor, ex metus pellentesque tortor, eget lacinia orci ipsum sed sem. Duis faucibus massa nec erat ultrices, vel dapibus mauris blandit. Aliquam placerat faucibus ante dolor.','2022-06-13 13:44:27'),(3,'user3@mail.com','$2b$10$LLgwD1qfw3W3.xz5Myir.ukjeUhGvLOV1E8X7yvO1H9HH9W7HHIEq','user3',1,NULL,NULL,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id mauris interdum, feugiat ante eget, ornare est. Nunc id nisi ullamcorper, euismod augue et, dignissim neque. Quisque nibh nibh, vulputate quis lacus in, rutrum facilisis nulla. Maecenas non erat nec nisi imperdiet consequat. Nam suscipit, nibh at maximus auctor, ex metus pellentesque tortor, eget lacinia orci ipsum sed sem. Duis faucibus massa nec erat ultrices, vel dapibus mauris blandit. Aliquam placerat faucibus ante dolor.','2022-06-13 13:46:07');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +149,7 @@ CREATE TABLE `users_images` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `users_images_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -158,7 +158,7 @@ CREATE TABLE `users_images` (
 
 LOCK TABLES `users_images` WRITE;
 /*!40000 ALTER TABLE `users_images` DISABLE KEYS */;
-INSERT INTO `users_images` VALUES (1,1,'ba156c16-f602-4059-8d36-330af540771c.jpg'),(2,1,'4f9f5d1d-b71b-44bc-b82f-7dab179efbc4.jpg'),(3,1,'16b8b524-6f23-4fca-8501-0841ecf2c28a.jpg'),(4,1,'d53f846b-f9ad-430a-8f78-fa4db72b1741.jpg'),(5,1,'c056d753-49b0-404e-8916-40e89c755854.jpg'),(6,1,'0ced56a2-b2ca-4ca2-8677-b67754c8e9fc.jpg'),(7,1,'a26b2421-0b6a-46d3-beaf-f5d8fdf7a98e.jpg'),(8,1,'4fafd0e4-86e8-47c0-a675-8866e4173579.jpg'),(9,1,'13e23ed0-701a-430c-b377-9bc146ecfe82.jpg'),(10,1,'50cd15e4-d906-4a49-a11b-0e521c6f1ee8.jpg'),(11,1,'a8579ffe-f8b2-4cde-a54b-254edabec2c4.jpg'),(12,1,'ac4c5430-0b5c-4bdf-9ccc-b612d7e3c7e6.jpg'),(13,1,'e259b8b7-4bdf-44ff-863b-44ccbc502dcd.jpg'),(14,1,'/home/hack/HAB/MOD2_BACKEND/MOD2_PROXECTO NODE/avatar/a5b59ca1-21fb-49cc-931e-e60894906203.jpg'),(15,1,'/home/hack/HAB/MOD2_BACKEND/MOD2_PROXECTO NODE/avatar/796737bb-48b5-419e-bcc9-9d7a7b9825d5.jpg'),(16,1,'/home/hack/HAB/MOD2_BACKEND/MOD2_PROXECTO NODE/avatar/f7cafa8a-bee6-44e8-9415-781204a3795b.jpg'),(17,1,'/home/hack/HAB/MOD2_BACKEND/MOD2_PROXECTO NODE/avatar/8db0f87f-ddcb-48a0-af47-96265238188a.jpg'),(18,1,'/home/hack/HAB/MOD2_BACKEND/MOD2_PROXECTO NODE/avatar/77085b61-b7ae-4ade-920a-1d351298c0d9.jpg'),(19,1,'/home/hack/HAB/MOD2_BACKEND/MOD2_PROXECTO NODE/avatar/196f9469-084a-4e12-af98-5ae742e2c7b5.jpg'),(20,1,'/home/hack/HAB/MOD2_BACKEND/MOD2_PROXECTO NODE/avatar/3ad3fb01-2a23-4224-83d5-09252659c9f0.jpg'),(21,1,'/home/hack/HAB/MOD2_BACKEND/MOD2_PROXECTO NODE/avatar/249d8bed-0dd4-482c-9a64-5d88749d71a9.jpg'),(22,2,'/home/hack/HAB/MOD2_BACKEND/MOD2_PROXECTO NODE/avatar/4f1acd10-edc5-4582-a7bb-1a165637f74e.jpg'),(23,3,'/home/hack/HAB/MOD2_BACKEND/MOD2_PROXECTO NODE/avatar/92622738-ef36-485e-8085-9aeeb42684a3.jpg');
+INSERT INTO `users_images` VALUES (1,1,'ce8f2ab3-9b78-4a9b-85a6-c4ae1e5500ba.jpg'),(2,2,'b96cff8d-edf0-4378-80fc-db93162cd8a4.jpg'),(3,3,'bbbffd45-24c8-4a62-9e9c-d76ba2f8976b.jpg');
 /*!40000 ALTER TABLE `users_images` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -171,4 +171,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-06 20:39:43
+-- Dump completed on 2022-06-13 14:02:57
