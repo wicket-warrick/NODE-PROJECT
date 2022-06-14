@@ -82,15 +82,13 @@ DROP TABLE IF EXISTS `news_votes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `news_votes` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `user_id` int DEFAULT NULL,
-  `new_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `new_id` (`new_id`),
+  `user_id` int NOT NULL,
+  `new_id` int NOT NULL,
+  PRIMARY KEY (`new_id`,`user_id`),
   KEY `user_id` (`user_id`),
-  CONSTRAINT `news_votes_ibfk_1` FOREIGN KEY (`new_id`) REFERENCES `news` (`id`) ON DELETE SET NULL,
-  CONSTRAINT `news_votes_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `news_votes_ibfk_1` FOREIGN KEY (`new_id`) REFERENCES `news` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `news_votes_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +97,6 @@ CREATE TABLE `news_votes` (
 
 LOCK TABLES `news_votes` WRITE;
 /*!40000 ALTER TABLE `news_votes` DISABLE KEYS */;
-INSERT INTO `news_votes` VALUES (1,3,9),(2,3,8),(3,3,7),(4,2,9),(5,2,5),(6,2,4),(7,2,3),(8,3,9),(9,3,5),(10,3,4),(11,3,3),(12,3,2),(13,3,1),(14,3,2),(15,3,1),(16,3,8),(17,3,9);
 /*!40000 ALTER TABLE `news_votes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -131,7 +128,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'user1@mail.com','$2b$10$.E6P19u1wVkmhL/uPZLhAOZAe3QAFDA4dTHyE8k.vG6UfN.Jy7lSK','user1',1,NULL,NULL,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id mauris interdum, feugiat ante eget, ornare est. Nunc id nisi ullamcorper, euismod augue et, dignissim neque. Quisque nibh nibh, vulputate quis lacus in, rutrum facilisis nulla. Maecenas non erat nec nisi imperdiet consequat. Nam suscipit, nibh at maximus auctor, ex metus pellentesque tortor, eget lacinia orci ipsum sed sem. Duis faucibus massa nec erat ultrices, vel dapibus mauris blandit. Aliquam placerat faucibus ante dolor.','2022-06-13 13:38:12'),(2,'user2@mail.com','$2b$10$P1v8R7/ouSQ2gK1/wwD4ZeeLMeVtGNb3E9BzozX20pyKtNjbQngTq','user2',1,NULL,NULL,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id mauris interdum, feugiat ante eget, ornare est. Nunc id nisi ullamcorper, euismod augue et, dignissim neque. Quisque nibh nibh, vulputate quis lacus in, rutrum facilisis nulla. Maecenas non erat nec nisi imperdiet consequat. Nam suscipit, nibh at maximus auctor, ex metus pellentesque tortor, eget lacinia orci ipsum sed sem. Duis faucibus massa nec erat ultrices, vel dapibus mauris blandit. Aliquam placerat faucibus ante dolor.','2022-06-13 13:44:27'),(3,'user3@mail.com','$2b$10$LLgwD1qfw3W3.xz5Myir.ukjeUhGvLOV1E8X7yvO1H9HH9W7HHIEq','user3',1,NULL,NULL,'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus id mauris interdum, feugiat ante eget, ornare est. Nunc id nisi ullamcorper, euismod augue et, dignissim neque. Quisque nibh nibh, vulputate quis lacus in, rutrum facilisis nulla. Maecenas non erat nec nisi imperdiet consequat. Nam suscipit, nibh at maximus auctor, ex metus pellentesque tortor, eget lacinia orci ipsum sed sem. Duis faucibus massa nec erat ultrices, vel dapibus mauris blandit. Aliquam placerat faucibus ante dolor.','2022-06-13 13:46:07');
+INSERT INTO `users` VALUES (1,'user1@mail.com','$2b$10$CtKu1dzHHb9jdJMCez8dz.sCyfzLmcmmbnKhEc.5uH1QeQJ4vh89C','user1',1,NULL,NULL,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam provident quaerat tempore eligendi, deserunt, sequi perspiciatis dolore quasi dolorum explicabo ad dolorem fuga, in aperiam. Fugiat reiciendis velit ipsa maiores.','2022-06-06 19:31:53'),(2,'user2@mail.com','$2b$10$Ux/7LR208cFQd54xGt9FfuCwQ13mTJbZ8fmUjFo6t8DTt.c0L.CUm','user2',1,NULL,NULL,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam provident quaerat tempore eligendi, deserunt, sequi perspiciatis dolore quasi dolorum explicabo ad dolorem fuga, in aperiam. Fugiat reiciendis velit ipsa maiores.','2022-06-06 19:34:05'),(3,'user3@mail.com','$2b$10$VfiJCsXYprL4Im5yug6vneIkzOqMxfBVhJomZMkKl3PuVf.I0rhba','user3',1,NULL,NULL,'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam provident quaerat tempore eligendi, deserunt, sequi perspiciatis dolore quasi dolorum explicabo ad dolorem fuga, in aperiam. Fugiat reiciendis velit ipsa maiores.','2022-06-06 19:35:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -158,7 +155,7 @@ CREATE TABLE `users_images` (
 
 LOCK TABLES `users_images` WRITE;
 /*!40000 ALTER TABLE `users_images` DISABLE KEYS */;
-INSERT INTO `users_images` VALUES (1,1,'ce8f2ab3-9b78-4a9b-85a6-c4ae1e5500ba.jpg'),(2,2,'b96cff8d-edf0-4378-80fc-db93162cd8a4.jpg'),(3,3,'bbbffd45-24c8-4a62-9e9c-d76ba2f8976b.jpg');
+INSERT INTO `users_images` VALUES (1,1,'a8f2dec0-4763-4922-979a-f93e4b5775f0.jpg'),(2,2,'53c4b19f-0c2f-4329-91bd-861c12ad0f14.jpg'),(3,3,'dbce2a83-516a-470c-84ea-e662bddc826f.jpg');
 /*!40000 ALTER TABLE `users_images` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -171,4 +168,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-13 14:02:57
+-- Dump completed on 2022-06-14 11:57:28
