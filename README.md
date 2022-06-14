@@ -1,13 +1,5 @@
 <div id="top"></div>
 
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
-<!-- [![LinkedIn][linkedin-shield]][linkedin-url] -->
-
 <!-- PROJECT LOGO & INFO-->
 <br />
 <div align="center">
@@ -174,9 +166,17 @@ The information related to the entities can be found in the following <a href='h
 
 ## Contact
 
-Hugo Suárez - [@your_twitter](https://twitter.com/your_username) - email@example.com
-</br>
-Juán Fernández - [@your_twitter](https://twitter.com/your_username) - email@example.com
+<h3>Hugo Suárez</h3>
+
+[![Linkedin][linkedin-shield]](https://www.linkedin.com/in/hugosuarezdevp)
+
+[![GitHub][github-shield]](https://github.com/wicket-warrick)
+
+<h3>Juan Fernández</h3>
+
+[![Linkedin][linkedin-shield]](https://www.linkedin.com/in/juanfernandezmirandacano)
+
+[![GitHub][github-shield]](https://github.com/canojuan10)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -188,19 +188,7 @@ Juán Fernández - [@your_twitter](https://twitter.com/your_username) - email@ex
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/Best-README-Template.svg?style=for-the-badge
-[contributors-url]: https://github.com/othneildrew/Best-README-Template/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/Best-README-Template.svg?style=for-the-badge
-[forks-url]: https://github.com/othneildrew/Best-README-Template/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/Best-README-Template.svg?style=for-the-badge
-[stars-url]: https://github.com/othneildrew/Best-README-Template/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/Best-README-Template.svg?style=for-the-badge
-[issues-url]: https://github.com/othneildrew/Best-README-Template/issues
-[license-shield]: https://img.shields.io/github/license/othneildrew/Best-README-Template.svg?style=for-the-badge
-[license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-shield]: https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
+[github-shield]: https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white
