@@ -41,9 +41,7 @@
     <li><a href='#user-endpoints'>User Endpoints</a></li>
     <li><a href='#news-endpoints'>News Endpoints</a></li>
     </ul>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -85,7 +83,7 @@ There are two options:
 A. CLONE the repo.
 
 ```sh
-git clone https://github.com/wicket-warrick/PROXECTO2_NODE
+git clone git@github.com:wicket-warrick/PROXECTO2_NODE.git
 ```
 
 B. DOWNLOAD the repo.
