@@ -32,6 +32,7 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
+    "node-pre-gyp": "^0.17.0",
     "randomstring": "^1.2.2",
     "sharp": "^0.30.4",
     "uuid": "^8.3.2"
@@ -39,8 +40,9 @@
   "devDependencies": {
     "nodemon": "^2.0.15",
     "prettier": "^2.7.1"
-  }
-  ,"engines": {
-    "node": "18.7.0"
+  },
+  "engines": {
+    "node": "18.7.0",
+    "npm": "8.15.0"
   }
 }
