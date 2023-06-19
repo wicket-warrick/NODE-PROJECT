@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "initdb": "node ./db/initDb.js"
+    "initdb": "node ./db/initDb.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
