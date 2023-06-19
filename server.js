@@ -87,13 +87,10 @@ app.use("/avatar", express.static("./avatar"));
 
 app.use(cors());
 
-app.use('/',(req, res) => {
-  res.statusCode = 200;
-  res.send({
-    status: "inicio",
-    message: "Inicio",
-  });
+app.get('/', function (req, res) {
+  res.send('Hello World!');
 });
+
 
 app.post("/user", createUserController);
 
