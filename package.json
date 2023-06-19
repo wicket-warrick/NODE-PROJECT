@@ -22,7 +22,6 @@
   "dependencies": {
     "@sendgrid/mail": "^7.6.2",
     "bcrypt": "^5.0.1",
-    "canvas": "2.x",
     "chalk": "^4.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
