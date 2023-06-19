@@ -96,7 +96,7 @@ app.post("/user", createUserController);
 
 app.get("/user/:idUser", getUserByIdController);
 
-app.post("/user/login", loginUserCoclearntroller);
+app.post("/user/login", loginUserController);
 
 app.get("/user/validate/:registrationCode", validateUserController);
 
@@ -162,6 +162,6 @@ const { API_PORT, API_HOST } = process.env;
 console.log(API_PORT)
 app.listen(API_PORT, () => {
   console.log(
-    chalk.black.bgWhite.bold(`API funcionando en ${API_HOST}:${API_PORT}`)
+    chalk.black.bgWhite.bold(`API funcionando en puerto ${API_PORT}`)
   );
 });
