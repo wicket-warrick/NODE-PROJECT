@@ -13,6 +13,7 @@ const processAndSavePhoto = async (photoData) => {
   if (photoInfo.width > 1000) {
     photo.resize(500);
   }
+
   const photoFileName = `${uuid.v4()}.jpg`;
   await photo.toFile(path.join(photoUploadPath, photoFileName));
   return photoFileName;

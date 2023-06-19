@@ -59,6 +59,7 @@ const getUserByActivationCode = async (registrationCode) => {
 };
 
 const getUserById = async (id) => {
+  let connection
   try {
     connection = await getConnection();
     const [results] = await connection.query(

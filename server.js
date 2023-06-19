@@ -154,6 +154,7 @@ app.use((error, req, res, next) => {
 });
 
 const { API_PORT, API_HOST } = process.env;
+console.log(API_PORT)
 app.listen(API_PORT, () => {
   console.log(
     chalk.black.bgWhite.bold(`API funcionando en ${API_HOST}:${API_PORT}`)

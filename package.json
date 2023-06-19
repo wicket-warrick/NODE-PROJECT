@@ -21,6 +21,7 @@
   "dependencies": {
     "@sendgrid/mail": "^7.6.2",
     "bcrypt": "^5.0.1",
+    "canvas": "^2.9.3",
     "chalk": "^4.1.2",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -35,6 +36,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "prettier": "^2.7.1"
   }
 }
