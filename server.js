@@ -87,11 +87,19 @@ app.use("/avatar", express.static("./avatar"));
 
 app.use(cors());
 
+app.use('/',(req, res) => {
+  res.statusCode = 200;
+  res.send({
+    status: "inicio",
+    message: "Inicio",
+  });
+});
+
 app.post("/user", createUserController);
 
 app.get("/user/:idUser", getUserByIdController);
 
-app.post("/user/login", loginUserController);
+app.post("/user/login", loginUserCoclearntroller);
 
 app.get("/user/validate/:registrationCode", validateUserController);
 
