@@ -158,7 +158,8 @@ app.use((error, req, res, next) => {
   });
 });
 
-const { API_PORT, API_HOST } = process.env;
+// const { API_PORT, API_HOST } = process.env;
+const API_PORT=process.env.API_PORT
 console.log(API_PORT)
 app.listen(API_PORT || 3000, () => {
   console.log(
