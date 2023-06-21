@@ -1,7 +1,7 @@
 const { getUserByEmail, updateUserRecoverCode } = require("../../db/users");
 
 const { generateError } = require("../../helpers/generateError");
-const { sendEmailRecoveryPassword } = require("../../helpers/sendEmail");
+const { sendEmailRecoveryPassword } = require("../../helpers/sendEmailNodeMailer");
 const {
   recoveryUserPasswordSchema,
 } = require("../../validators/userValidator");

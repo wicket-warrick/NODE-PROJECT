@@ -22,7 +22,7 @@ const createUserController = async (req, res, next) => {
   /**
    * *LOCAL DEPLOYMENT
    */
-    // const validationUrl = `${process.env.API_HOST}:${process.env.API_PORT_FRONTEND}/user/validate/${registrationCode}`;
+    // const validationUrl = `${process.env.API_HOST_LOCAL}:${process.env.API_PORT_FRONTEND}/user/validate/${registrationCode}`;
 
   /**
    * *WEB DEPLOYMENT
