@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/wicket-warrick/PROXECTO2_NODE#readme",
   "dependencies": {
-    "@sendgrid/mail": "^7.6.2",
+    "@sendgrid/mail": "^7.7.0",
     "bcrypt": "^5.0.1",
     "chalk": "^4.1.2",
     "cors": "^2.8.5",
@@ -31,6 +31,7 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.3",
+    "nodemailer": "^6.9.3",
     "randomstring": "^1.2.2",
     "sharp": "^0.30.4",
     "uuid": "^8.3.2"
