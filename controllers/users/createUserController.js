@@ -19,8 +19,15 @@ const createUserController = async (req, res, next) => {
       bio
     );
 
-    const validationUrl = `${process.env.API_HOST}:${process.env.API_PORT_FRONTEND}/user/validate/${registrationCode}`;
-    // const validationUrl = `${process.env.API_HOST}/user/validate/${registrationCode}`;
+  /**
+   * *LOCAL DEPLOYMENT
+   */
+    // const validationUrl = `${process.env.API_HOST}:${process.env.API_PORT_FRONTEND}/user/validate/${registrationCode}`;
+
+  /**
+   * *WEB DEPLOYMENT
+   */
+    const validationUrl = `${process.env.API_HOST}/user/validate/${registrationCode}`;
     try {
      
       await sendEmail({
