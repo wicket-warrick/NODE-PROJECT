@@ -150,7 +150,6 @@ app.use((req, res) => {
 });
 
 app.use((error, req, res, next) => {
-  console.error(error);
   res.statusCode = error.httpStatus || 500;
   res.send({
     status: "error",
@@ -160,7 +159,6 @@ app.use((error, req, res, next) => {
 
 // const { API_PORT, API_HOST } = process.env;
 const API_PORT=process.env.PORT || 3000
-// console.log(API_PORT)
 app.listen(API_PORT, () => {
   console.log(
     chalk.black.bgWhite.bold(`API funcionando en puerto ${API_PORT}`)

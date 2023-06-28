@@ -27,7 +27,7 @@ const createUserController = async (req, res, next) => {
   /**
    * *WEB DEPLOYMENT
    */
-    const validationUrl = `${process.env.API_HOST}/user/validate/${registrationCode}`;
+    const validationUrl = `${process.env.API_FRONTEND}/user/validate/${registrationCode}`;
     try {
      
       await sendEmail({
